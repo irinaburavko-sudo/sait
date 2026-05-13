@@ -1,0 +1,2287 @@
+﻿Вот полный HTML-код сайта с лекциями и практическими работами из вашего файла. Все тексты, таблицы и изображения интегрированы в одну структурированную страницу с удобной навигацией.
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курс: Бизнес-процессы и SQL | Моделирование и аналитика</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            color: #1a1a2e;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 10px 25px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Container */
+        .container {
+            display: flex;
+            margin-top: 80px;
+            min-height: calc(100vh - 130px);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 320px;
+            background: white;
+            border-right: 1px solid #e0e0e0;
+            position: fixed;
+            top: 80px;
+            bottom: 0;
+            overflow-y: auto;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+        }
+
+        .sidebar-section {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .sidebar-section h3 {
+            padding: 0 20px;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .sidebar-nav {
+            list-style: none;
+        }
+
+        .sidebar-nav li {
+            margin: 2px 0;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 10px 20px;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-link:hover {
+            background: #f0f2f5;
+            color: #0066cc;
+        }
+
+        .nav-link.active {
+            background: #e8f0fe;
+            color: #0066cc;
+            border-left-color: #0066cc;
+            font-weight: 500;
+        }
+
+        .practice-link {
+            color: #2c7a4d;
+        }
+
+        .practice-link:hover {
+            background: #e8f5e9;
+            color: #1b5e2a;
+        }
+
+        .practice-link.active {
+            background: #e8f5e9;
+            color: #1b5e2a;
+            border-left-color: #2c7a4d;
+        }
+
+        /* Content area */
+        .content {
+            flex: 1;
+            margin-left: 320px;
+            padding: 30px 40px;
+            background: #f8f9fa;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Типографика */
+        .content-card h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #1a1a2e;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #0066cc;
+        }
+
+        .content-card h2 {
+            font-size: 1.5rem;
+            margin: 25px 0 15px;
+            color: #16213e;
+        }
+
+        .content-card h3 {
+            font-size: 1.2rem;
+            margin: 20px 0 10px;
+            color: #1a1a2e;
+        }
+
+        .content-card p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .content-card ul, .content-card ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        .content-card li {
+            margin: 8px 0;
+        }
+
+        .content-card table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.85rem;
+        }
+
+        .content-card th, .content-card td {
+            border: 1px solid #ddd;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .content-card th {
+            background: #f0f2f5;
+            font-weight: 600;
+        }
+
+        .content-card pre, .content-card code {
+            background: #1e2a3a;
+            color: #e2e8f0;
+            padding: 12px 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.85rem;
+            display: block;
+            margin: 15px 0;
+        }
+
+        .content-card code.inline {
+            background: #e8e8e8;
+            color: #d63369;
+            padding: 2px 6px;
+            display: inline;
+        }
+
+        .content-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+        }
+
+        .content-card figure {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .content-card figcaption {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Hero / главная страница */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero h1 {
+            border-bottom: none;
+            font-size: 2.2rem;
+        }
+
+        .modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .module-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #e0e0e0;
+        }
+
+        .module-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #0066cc;
+        }
+
+        .module-card h3 {
+            margin-bottom: 10px;
+            color: #0066cc;
+        }
+
+        .module-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: #e8f0fe;
+            color: #0066cc;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+
+        .practice-badge {
+            background: #e8f5e9;
+            color: #2c7a4d;
+        }
+
+        hr {
+            margin: 20px 0;
+            border: none;
+            border-top: 1px solid #ddd;
+        }
+
+        .faq-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        .faq-btn:hover {
+            background: #004999;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 250px;
+            }
+            .content {
+                margin-left: 250px;
+                padding: 20px;
+            }
+            .content-card {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                position: relative;
+                width: 100%;
+                top: 0;
+                max-height: 300px;
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+            }
+            .content {
+                margin-left: 0;
+            }
+        }
+		.test-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .test-header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+        .test-header h1 {
+            color: white;
+            border-bottom: none;
+            margin-bottom: 10px;
+        }
+        .test-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            background: #e8f0fe;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        .test-info-item {
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .question-block {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: box-shadow 0.2s;
+        }
+        .question-block:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .question-text {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            color: #1a1a2e;
+        }
+        .question-number {
+            display: inline-block;
+            background: #0066cc;
+            color: white;
+            border-radius: 20px;
+            padding: 2px 10px;
+            font-size: 0.75rem;
+            margin-right: 10px;
+        }
+        .options {
+            padding-left: 20px;
+        }
+        .option {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .option input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        .option label {
+            cursor: pointer;
+            margin: 0;
+        }
+        .text-answer {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+        .part-title {
+            background: #f0f2f5;
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin: 25px 0 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a1a2e;
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, #2c7a4d 0%, #1b5e2a 100%);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: transform 0.2s;
+        }
+        .btn-submit:hover {
+            transform: scale(1.02);
+        }
+        .btn-reset {
+            background: #6c757d;
+            margin-left: 15px;
+        }
+        .btn-reset:hover {
+            background: #5a6268;
+        }
+        .results {
+            background: #e8f5e9;
+            border: 2px solid #2c7a4d;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .results h3 {
+            color: #2c7a4d;
+            margin-bottom: 15px;
+        }
+        .score {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c7a4d;
+        }
+        .grade {
+            font-size: 1.3rem;
+            margin-top: 10px;
+        }
+        .btn-restart {
+            background: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .hidden {
+            display: none;
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 8px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        .feedback.correct {
+            background: #e8f5e9;
+            color: #2c7a4d;
+        }
+        .feedback.incorrect {
+            background: #ffebee;
+            color: #c62828;
+        }
+        .timer {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #c62828;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <div>
+            <h1>📊 Бизнес-процессы и аналитика данных</h1>
+            <p>Курс лекций и практических работ | Моделирование BPMN / EPC / IDEF0 | SQL для управления процессами</p>
+        </div>
+       <button id="homeButton" style="background: rgba(255,255,255,0.15); color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 0.85rem;">🏠 На главную</button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="sidebar">
+        <div class="sidebar-section">
+            <h3>📚 Лекции</h3>
+            <ul class="sidebar-nav">
+                <li><a class="nav-link" data-page="lecture1">Лекция 1. Основы моделирования бизнес-процессов</a></li>
+                <li><a class="nav-link" data-page="lecture2">Лекция 2. Формальные модели: BPMN, EPC, IDEF0</a></li>
+                <li><a class="nav-link" data-page="lecture3">Лекция 3. Информационные потоки и архитектура данных</a></li>
+                <li><a class="nav-link" data-page="lecture4">Лекция 4. Основы SQL (SELECT, WHERE, ORDER BY)</a></li>
+                <li><a class="nav-link" data-page="lecture5">Лекция 5. Агрегация и группировка в SQL</a></li>
+                <li><a class="nav-link" data-page="lecture6">Лекция 6. Интеграция BPMN и SQL</a></li>
+            </ul>
+        </div>
+        <div class="sidebar-section">
+            <h3>🛠️ Практические работы</h3>
+            <ul class="sidebar-nav">
+                <li><a class="nav-link practice-link" data-page="practice1">Практическая работа №1</a></li>
+                <li><a class="nav-link practice-link" data-page="practice2">Практическая работа №2</a></li>
+                <li><a class="nav-link practice-link" data-page="practice3">Практическая работа №3</a></li>
+                <li><a class="nav-link practice-link" data-page="practice4">Практическая работа №4</a></li>
+                <li><a class="nav-link practice-link" data-page="practice5">Практическая работа №5</a></li>
+                <li><a class="nav-link practice-link" data-page="practice6">Практическая работа №6</a></li>
+                <li><a class="nav-link practice-link" data-page="practice7">Практическая работа №7</a></li>
+                <li><a class="nav-link practice-link" data-page="practice8">Практическая работа №8</a></li>
+            </ul>
+        </div>
+	<div class="sidebar-section">
+    <h3>📝 Тестирование</h3>
+    <ul class="sidebar-nav">
+        <li><a class="nav-link" data-page="test">Итоговый тест</a></li>
+    </ul>
+    </div>
+</div>
+
+    <div class="content">
+        <div id="main-content" class="content-card">
+            <!-- Главная страница будет загружена через JS, но резервно встроим -->
+            <div id="home-page">
+                <div class="hero">
+                    <h1>📊 Бизнес-процессы и аналитика данных</h1>
+                    <p>Курс лекций и практических работ по моделированию бизнес-процессов (BPMN, EPC, IDEF0) и языку структурированных запросов SQL</p>
+                </div>
+                <h2>О курсе</h2>
+                <p>В современном бизнесе ключевыми компетенциями становятся умение формализовать бизнес-процессы и владение SQL для анализа накопленных данных. Курс объединяет эти две области: нормативные модели процессов сопоставляются с фактическими данными из баз данных для выявления узких мест и непрерывного улучшения.</p>
+                <h2>Содержание курса</h2>
+                <div class="modules-grid">
+                    <div class="module-card" data-page="lecture1"><h3>Лекция 1</h3><p>Сущность процесса, эффекты формализации, место SQL, нотации BPMN/EPC/IDEF0.</p><span class="module-badge">Теория</span></div>
+                    <div class="module-card" data-page="lecture2"><h3>Лекция 2</h3><p>BPMN, EPC, IDEF0: структурные элементы, шлюзы, правила моделирования, выбор стандарта.</p><span class="module-badge">Теория</span></div>
+                    <div class="module-card" data-page="lecture3"><h3>Лекция 3</h3><p>Источники данных, базы данных vs Excel, архитектура от OLTP к BI.</p><span class="module-badge">Теория</span></div>
+                    <div class="module-card" data-page="lecture4"><h3>Лекция 4</h3><p>Установка DB Browser, CREATE TABLE, SELECT, WHERE, ORDER BY.</p><span class="module-badge">Теория</span></div>
+                    <div class="module-card" data-page="lecture5"><h3>Лекция 5</h3><p>Агрегатные функции, GROUP BY, HAVING, порядок выполнения запросов.</p><span class="module-badge">Теория</span></div>
+                    <div class="module-card" data-page="lecture6"><h3>Лекция 6</h3><p>Интеграция BPMN и SQL: воронка, диагностика узких мест, цикл улучшений.</p><span class="module-badge">Теория</span></div>
+                </div>
+                <h2>Практические работы</h2>
+                <div class="modules-grid">
+                    <div class="module-card" data-page="practice1"><h3>Практическая работа №1</h3><p>BPMN в diagrams.net: процесс сдачи бутылок.</p><span class="module-badge practice-badge">Практика</span></div>
+                    <div class="module-card" data-page="practice2"><h3>Практическая работа №2</h3><p>DB Browser, первые SELECT, фильтрация, сортировка.</p><span class="module-badge practice-badge">Практика</span></div>
+                    <div class="module-card" data-page="practice3"><h3>Практическая работа №3</h3><p>ALTER TABLE, UPDATE, DELETE, переименование столбцов.</p><span class="module-badge practice-badge">Практика</span></div>
+                    <div class="module-card" data-page="practice4"><h3>Практическая работа №4</h3><p>COUNT, SUM, AVG, MIN, MAX, групповая аналитика.</p><span class="module-badge practice-badge">Практика</span></div>
+                    <div class="module-card" data-page="practice5"><h3>Практическая работа №5</h3><p>GROUP BY по нескольким полям, оконные функции, VIEW.</p><span class="module-badge practice-badge">Практика</span></div>
+                    <div class="module-card" data-page="practice6"><h3>Практическая работа №6</h3><p>Расчёт времени в статусах, воронка процесса, CTE.</p><span class="module-badge practice-badge">Практика</span></div>
+                    <div class="module-card" data-page="practice7"><h3>Практическая работа №7</h3><p>Внешние ключи, связанные таблицы, история изменений.</p><span class="module-badge practice-badge">Практика</span></div>
+                    <div class="module-card" data-page="practice8"><h3>Практическая работа №8</h3><p>Сквозная аналитика, сегментация, дашборд, управленческие выводы.</p><span class="module-badge practice-badge">Практика</span></div>
+                </div>
+                <hr><p style="text-align:center; color:#666; font-size:0.85rem;">Выберите лекцию или практическую работу из левого меню</p>
+            </div>
+        </div>
+    </div>
+</div>
+<a href="#" id="faq-link" class="faq-btn" title="Задать вопрос ВКонтакте">📱</a>
+
+<script>
+    // Содержимое всех лекций и практических работ (полные тексты без сокращений, таблицы в HTML)
+    const contentData = {
+        // Лекция 1
+        lecture1: `
+<h1>Лекция 1. Основы моделирования бизнес-процессов в организационных системах</h1>
+<h2>План</h2>
+<ol>
+<li>Сущность бизнес-процесса как объекта управления</li>
+<li>Место SQL в процессном управлении</li>
+<li>Нотации визуального описания: BPMN, EPC, IDEF0</li>
+<li>Критические условия для внедрения процессного управления</li>
+</ol>
+<h2>Сущность бизнес-процесса как объекта управления</h2>
+<p>В любой компании, независимо от масштаба, присутствуют повторяющиеся действия: приём заявок, согласования, передача задач, контроль сроков. На этапе малого бизнеса эти операции часто базируются на неформальных договорённостях, опыте сотрудников и устных правилах. Однако по мере масштабирования организации начинают проявляться системные ошибки, задержки и размывание ответственности.</p>
+<p>В данном контексте ключевую роль приобретает моделирование бизнес-процессов. Данный инструмент позволяет трансформировать разрозненные действия в структурированную систему с чёткими шагами, зонами ответственности и фиксированными результатами на выходе.</p>
+<p><strong>Бизнес-процесс</strong> представляет собой повторяющуюся последовательность действий, выполняемую различными исполнителями или подразделениями, направленную на получение измеримого результата: продукта, услуги или решения задачи.</p>
+<p>Отсутствие формализации рабочих схем препятствует масштабированию компании и повышению эффективности. Описание бизнес-процессов позволяет систематизировать деятельность. Формализация даёт следующие преимущества для бизнеса:</p>
+<ol>
+<li><strong>Стандартизация и оперативность.</strong> Наличие чёткого регламента для каждой типовой задачи обеспечивает быстрое и корректное выполнение работы сотрудниками. Устойчивые процессы гарантируют предсказуемый результат и стабильность качества.</li>
+<li><strong>Прозрачность и контроль.</strong> Графическое описание делает каждый этап понятным для всех участников. Руководство получает возможность идентифицировать узкие места и устранять их. В процессе описания часто выявляются избыточные операции, потребляющие время и ресурсы — их оптимизация повышает общую эффективность компании.</li>
+<li><strong>Разграничение ответственности.</strong> За каждым процессом закрепляются конкретные роли и исполнители. Документированная схема чётко определяет зону ответственности каждого сотрудника и облегчает делегирование задач. Подразделения прекращают дублирование работы и конкуренцию за ресурсы, переходя к синхронному участию в едином процессе.</li>
+<li><strong>Сохранение знаний и обучение.</strong> Формализованный «на бумаге» процесс не зависит от отдельных сотрудников. Знания о порядке выполнения работы аккумулируются в компании. Новые сотрудники быстрее адаптируются, опираясь на готовые схемы и инструкции. Уход сотрудника не приводит к потере критической информации.</li>
+<li><strong>Гибкость и масштабирование.</strong> Формализованные процессы легче поддаются анализу и совершенствованию. Понимание структуры текущей работы упрощает внесение изменений: сокращение шагов или перераспределение задач. При изменении рыночных условий или масштабов бизнеса описанные процессы адаптируются быстрее. Чёткое разделение ролей облегчает рост компании — увеличение штата не парализует работу благодаря логичному распределению обязанностей.</li>
+<li><strong>Основа для автоматизации.</strong> Оптимизировать или автоматизировать можно только то, что предварительно формализовано. Поэтому перед внедрением CRM или роботизации бизнес сначала описывает каждый текущий процесс графически. Модель процесса (предпочтительно в визуальной форме) показывает направления улучшений. На основе такой схемы проще настраивать информационные системы.</li>
+</ol>
+<h2>Нотации описания процессов: BPMN, EPC, IDEF0</h2>
+<p>Важно понимать, что описание процессов не ограничивается текстовыми инструкциями с перечислением шагов. В большинстве компаний процессы визуализируют схематично.</p>
+<figure><img src="media/image1.png" style="width:5.368in;height:2.2769in" alt="Примерная схема бизнес-процесса" /><figcaption>Рисунок 1 – Примерная схема бизнес-процесса</figcaption></figure>
+<p>Схема позволяет увидеть целостную логику: начало процесса, ответственных, дальнейшие шаги, развилки, ожидания и параллельные действия. Это сложно уловить при текстовом описании.</p>
+<p>Существует множество способов визуального описания процессов, однако общая идея заключается в представлении процесса как последовательности блоков: блоки действий (содержание операции); роли (исполнители); условия (логические развилки); параллельные ветки; точки завершения.</p>
+<p>Это могут быть простые блок-схемы или формальные нотации, применяемые в компаниях для системного моделирования. Однако даже базовые визуальные схемы дают значительный эффект — становятся очевидными избыточные элементы, упрощения и точки автоматизации.</p>
+<p>Эффективность визуального описания обусловлена следующими факторами: визуализация границ процесса; идентификация исполнителей и последовательности действий; выявление ошибок и логических пробелов; облегчение командного обсуждения и улучшения процесса; идентификация шагов, подлежащих автоматизации.</p>
+<p>Описание процессов предпочтительно выполнять графически — в виде диаграммы. Существуют различные нотации (условные «языки» для таких схем). В настоящее время наиболее распространён стандарт BPMN (Business Process Model and Notation) как универсальный язык моделирования процессов. Также используются нотации EPC и IDEF0, каждая из которых имеет свои особенности.</p>
+<figure><img src="media/image2.png" style="width:5.73006in;height:1.902in" alt="Пример BPMN-модели" /><figcaption>Рисунок 2 – Пример BPMN-модели</figcaption></figure>
+<p><strong>BPMN</strong> — нотация, отображающая бизнес-процесс как пошаговый алгоритм. Она фокусируется на последовательности действий, событиях и взаимодействии участников. В схемах используются задачи, события, развилки и дорожки по ролям. BPMN легко читается неподготовленными пользователями и пригодна для автоматизации. В настоящее время это наиболее распространённый и фактически стандартный формат описания сложных бизнес-процессов.</p>
+<figure><img src="media/image3.png" style="width:4.58798in;height:3.1875in" alt="Пример EPC модели" /><figcaption>Рисунок 3 – Пример EPC модели</figcaption></figure>
+<p><strong>EPC (Event-Driven Process Chain)</strong> — нотация, построенная вокруг событий и функций. Каждое действие связано с событием, а схемы наглядны благодаря различным типам элементов: действий, исполнителей, ресурсов. EPC подходит для процессов с альтернативными сценариями, однако из-за обязательного события на каждом шаге крупные схемы быстро перегружаются и становятся сложными для восприятия.</p>
+<figure><img src="media/image4.png" style="width:3.83656in;height:4.13889in" alt="Пример IDEF0 модели" /><figcaption>Рисунок 4 – Пример IDEF0 модели</figcaption></figure>
+<p><strong>IDEF0</strong> — нотация функционального моделирования, описывающая процессы через входы, выходы, исполнителей и управляющие воздействия. Она позволяет детально проанализировать структуру процесса и используемые ресурсы, однако такие схемы сложны для чтения без подготовки. IDEF0 удобна для простых, линейных процессов, но при сложной логике быстро теряет наглядность.</p>
+<h2>Место SQL в процессном управлении</h2>
+<p>Формализация бизнес-процесса (его описание в нотации BPMN) является необходимым, но недостаточным условием для управления. BPMN-схема отвечает на вопрос «как должно работать», но не отвечает на вопросы «сколько?», «как долго?», «где сбой?». Для ответа на них требуются фактические данные о ходе выполнения процесса.</p>
+<p>Каждое действие в бизнес-процессе оставляет цифровой след: «Клиент оформил заказ» → запись в таблице «Заказы»; «Менеджер подтвердил наличие» → изменение статуса заказа; «Курьер доставил товар» → фиксация времени доставки.</p>
+<p>Все эти следы накапливаются в оперативных базах данных (CRM, ERP, WMS). Для их извлечения, фильтрации, группировки и расчёта сводных показателей используется SQL (Structured Query Language) — язык структурированных запросов.</p>
+<p>Таким образом, возникает двухуровневая модель управления: нормативный уровень — BPMN-диаграмма, показывающая, как должен исполняться процесс (последовательность шагов, зоны ответственности, точки принятия решений); фактический уровень — SQL-запросы к базе данных, показывающие, как процесс исполняется на самом деле (количество заказов по статусам, время нахождения в каждом этапе, выявленные отклонения от нормативов).</p>
+<p>Сравнение нормативного и фактического уровней позволяет: выявлять узкие места (например, 80% заказов зависли в статусе «Ожидает оплаты»), проверять гипотезы об эффективности процесса, обосновывать управленческие решения не интуитивно, а на основе данных.</p>
+<h2>Критические условия формализации процессов</h2>
+<p>Некоторые ситуации в бизнесе делают описание процессов критически важным:</p>
+<ol>
+<li><strong>Быстрый рост компании.</strong> Расширение штата и увеличение объёмов работ вскрывают хаос там, где ранее всё держалось на личных договорённостях. Для сохранения качества и скорости при масштабировании процессы должны быть формализованы.</li>
+<li><strong>Внедрение CRM/ERP или нового ПО.</strong> Перед цифровизацией необходимо детально проанализировать текущий бизнес. Немедленная «настройка программы» без анализа рискует автоматизировать хаос. Поэтому внедрение CRM начинают с обследования и документирования процессов. Это позволяет определить, что именно нужно перенести в систему и как оптимизировать шаги под новые инструменты.</li>
+<li><strong>Найм и обучение сотрудников.</strong> При появлении новых сотрудников наличие описанных процессов значительно упрощает их ввод в должность. Новичок видит не общий набор обязанностей, а конкретный алгоритм работы. Это ускоряет обучение и снижает количество ошибок.</li>
+<li><strong>Автоматизация и цифровая трансформация.</strong> Проекты по автоматизации требуют на входе понятной схемы текущего процесса. Без этого невозможно настроить корректный алгоритм в программном обеспечении.</li>
+</ol>
+<h2>Вывод</h2>
+<ol>
+<li>Бизнес-процесс — повторяющаяся последовательность действий, формализация которого является необходимым условием операционной эффективности.</li>
+<li>Шесть ключевых эффектов формализации: стандартизация, прозрачность, разграничение ответственности, сохранение знаний, гибкость, основа для автоматизации.</li>
+<li>Визуальное описание (блок-схемы, BPMN, EPC, IDEF0) превосходит текстовое по наглядности, позволяя идентифицировать развилки и параллельные действия.</li>
+<li>BPMN признана оптимальным стандартом де-факто благодаря понятности для бизнеса и соответствию международному стандарту ISO/IEC 19510.</li>
+</ol>
+`,
+
+        // Лекция 2 – с таблицами в HTML (символы можно добавить позже)
+        lecture2: `
+<h1>Лекция 2. Формальные модели бизнес-процессов: BPMN, EPC, IDEF0</h1>
+<h2>План</h2>
+<ol>
+<li>Структурные элементы BPMN-модели</li>
+<li>Нотация EPC: событийные цепочки процессов</li>
+<li>Функциональное моделирование IDEF0</li>
+<li>Сравнительный анализ нотаций и выбор стандарта</li>
+</ol>
+<p>У каждого процесса есть сущности и связи и чтобы наглядно был понятен бизнес-процесс, нужно знать, за что отвечает тот или иной процесс.</p>
+
+<h2>Структурные элементы BPMN-модели</h2>
+<p>В нотации BPMN выделяют пять основных категорий элементов:</p>
+<ul>
+<li>элементы потока (события, процессы и шлюзы);</li>
+<li>данные (объекты данных и базы данных);</li>
+<li>соединяющие элементы (потоки управления, потоки сообщений и ассоциации);</li>
+<li>зоны ответственности (пулы и дорожки);</li>
+<li>артефакты (сноски).</li>
+</ul>
+<p>Перечисленные элементы помещаются на диаграмму в виде различных фигур перетаскиванием из справочника, либо при помощи кнопок палитры элементов окна диаграммы. Часть кнопок имеют закрашенный треугольник на иконке — у таких кнопок есть выпадающий список для выбора типа фигуры.</p>
+
+<p><strong>Таблица 1 – Сущности BPMN-модели</strong></p>
+<table>
+<thead>
+<tr style="background-color:#f0f2f5;">
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Название</th>
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Графический символ</th>
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Процесс (Задача, Подпроцесс)</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">
+<img src="media/image5.png" style="width:100px; height:auto;" alt="Процесс"><br>
+<img src="media/image6.png" style="width:100px; height:auto;" alt="Подпроцесс">
+</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Блок представляет собой процесс — действие или набор действий, выполняемых над исходным объектом (документом, материальным объектом и прочим) с целью получения заданного результата. Внутри блока помещается наименование процесса. Временная последовательность выполнения процессов задается расположением процессов на диаграмме слева направо (сверху вниз на вертикальной диаграмме процесса BPMN). Процессы BPMN подразделяются на задачи и подпроцессы. <strong>Задача</strong> — это простое действие (или операция), которое не имеет дальнейшей декомпозиции в рамках рассматриваемого процесса. Задачи подразделяются на типы, каждый из которых (за исключением абстрактной задачи) обозначается своим маркером в левом верхнем углу блока задачи. <strong>Подпроцесс</strong> — это декомпозированный процесс, включенный в состав рассматриваемого процесса, который описан более подробно на своей диаграмме. На диаграмме подпроцесс обозначается блоком со знаком «плюс» в центре нижней части фигуры. Подпроцессы подразделяются на типы: Подпроцесс (подпроцесс с неопределенным типом); Событийный подпроцесс (подпроцесс, не имеющий входящих и исходящих потоков управления); Транзакция (подпроцесс, состоящий из набора процессов, которые в совокупности представляют некий неделимый процесс); Ad-Hoc процесс (подпроцесс, представляющий собой группу процессов, взаимодействие между которыми не поддаются строго регламентированным правилам).</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Событие</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">
+<img src="media/image7.png" style="width:20px; height:20px;" alt="Событие">
+<img src="media/image8.png" style="width:20px; height:20px;" alt="Событие">
+<img src="media/image9.png" style="width:20px; height:20px;" alt="Событие">
+<img src="media/image10.png" style="width:20px; height:20px;" alt="Событие">
+</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;"><strong>Событие</strong> — состояние, которое является существенным для целей управления бизнесом и оказывает влияние или контролирует дальнейшее развитие одного или более бизнес-процессов. Внутри блока помещается наименование события. При выполнении процесса могут происходить различные события, оказывающие влияние на ход процесса: старт процесса, его завершение, смена статуса документа, получение сообщения и многое другое. Но событие — элемент необязательный, поэтому на диаграмме процесса в нотации BPMN его может и не быть. Если же события возникают при выполнении процесса, то они разделяются на 2 категории: возникающие из-за какой-то причины и инициирующие какой-то результат. И причина возникновения события, и результат, который инициирует событие, называются триггером. События, обрабатывающие триггер, который привел к их возникновению, называются <strong>обработчиками</strong>. События, которые инициируют триггер (или некий результат), называются <strong>инициаторами</strong>.</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Параллельный шлюз</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;"><img src="media/image11.png" style="width:60px; height:auto;" alt="Параллельный шлюз"></td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Параллельный шлюз (AND, "И") используется для обозначения слияния/ветвления потоков управления в рамках процесса. На рисунке 6 параллельный шлюз используется для ветвления потоков управления или создания параллельных веток выполнения процесса: после выполнения Процесса 1 запустится выполнение и Процесса 2, и Процесса 3.<br><img src="media/image12.png" style="width:200px; height:auto;" alt="Ветвление"><br>Рисунок 6 — Ветвление<br><br>На рисунке 7 параллельный шлюз используется для слияния потоков управления или синхронизации параллельных веток выполнения процесса. Выполнение Процесса 3 запустится только тогда, когда выполнится и Процесс 1, и Процесс 2.<br><img src="media/image13.png" style="width:200px; height:auto;" alt="Слияние"><br>Рисунок 7 — Слияние</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Эксклюзивный шлюз</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;"><img src="media/image14.png" style="width:60px; height:auto;" alt="Эксклюзивный шлюз"></td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Эксклюзивный шлюз (XOR, "Исключающее ИЛИ") используется для ветвления потока управления на несколько альтернативных потоков, когда выполнение процесса зависит от выполнения некоторого условия. Символ «Эксклюзивный шлюз» может содержать внутренний маркер, выполненный в виде «X», но это не является обязательным. По умолчанию эксклюзивный шлюз добавляется на диаграмму с маркером. Условия на диаграмме задаются при помощи <strong>условных потоков управления</strong>, исходящих из шлюза. При использовании эксклюзивного шлюза можно продолжить выполнение процесса только по одному из возможных условных потоков управления. Среди потоков управления, исходящих из эксклюзивного шлюза, допускается использование <strong>потока управления по умолчанию</strong>: если ни одно из условий не выполняется, дальнейшее выполнение процесса продолжится по потоку управления по умолчанию.</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Неэксклюзивный шлюз</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;"><img src="media/image15.png" style="width:60px; height:auto;" alt="Неэксклюзивный шлюз"></td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Неэксклюзивный шлюз (OR, "ИЛИ") используется для ветвления потока управления на несколько потоков, когда выполнение процесса зависит от выполнения условий. При этом каждое из указанных условий является независимым, и дальнейшее выполнение процесса может продолжиться сразу по нескольким потокам управления, если условия будут выполнены. Для шлюза можно указывать наименование. Условия на диаграмме задаются при помощи <strong>условных потоков управления</strong>, исходящих из шлюза. Среди потоков управления, исходящих из неэксклюзивного шлюза, допускается использование <strong>потока управления по умолчанию</strong>: если ни одно из условий не выполняется, дальнейшее выполнение процесса продолжится по потоку управления по умолчанию.</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Комплексный шлюз</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;"><img src="media/image16.png" style="width:60px; height:auto;" alt="Комплексный шлюз"></td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Комплексный шлюз используется для ветвления потока управления на несколько потоков, когда выполнение процесса зависит от выполнения условий. По своему действию комплексный шлюз аналогичен неэксклюзивному шлюзу.</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Эксклюзивный шлюз по событиям</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;"><img src="media/image17.png" style="width:60px; height:auto;" alt="Эксклюзивный шлюз по событиям"></td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Эксклюзивный шлюз по событиям (XOR, "Исключающее ИЛИ") используется для ветвления потока управления на несколько альтернативных потоков, когда дальнейшее выполнение процесса зависит от возникновения некоторого события-обработчика, следующего после шлюза. Отдельно взятое событие, обычно с типами «Получение сообщения» или «Таймер», определяет выбор только одного маршрута, по которому будет проходить дальнейшее выполнение процесса: событие, идущее после шлюза и возникшее первым, определяет дальнейший ход выполнения процесса. На рисунке 8 после выполнения Процесса 1 дальнейшее выполнение процесса может продолжиться только по одной ветке, исходящей из шлюза: если первым возникло Событие 1, то выполнится только Процесс 2; если первым возникло Событие 2, то выполнится только Процесс 3.<br><img src="media/image18.png" style="width:200px; height:auto;" alt="Рисунок 8"><br>Рисунок 8<br><br>Существует 2 типа шлюзов по событиям, которые могут быть использованы в начале процесса: эксклюзивный шлюз по событиям (для запуска процесса) (рисунок 9); параллельный шлюз по событиям (для запуска процесса) (рисунок 10).<br><img src="media/image19.png" style="width:200px; height:auto;" alt="Рисунок 9"><br>Рисунок 9<br><br><img src="media/image20.png" style="width:200px; height:auto;" alt="Рисунок 10"><br>Рисунок 10</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Поток управления</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;"><img src="media/image21.png" style="width:100px; height:auto;" alt="Поток управления"></td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Стрелка используется для связи элементов потока BPMN (событий, процессов, шлюзов). Поток управления отображает ход выполнения процесса. При необходимости поток может быть именованным. Стандартный поток управления является неконтролируемым, т.е. на поток не воздействуют никакие условия, и поток не проходит через шлюзы. Простейшими примерами неконтролируемого потока управления могут служить отдельно взятый поток управления, связывающий два процесса, или потоки управления, сходящиеся в процессе или расходящийся от него.</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Условный поток управления</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;"><img src="media/image22.png" style="width:100px; height:auto;" alt="Условный поток управления"></td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Стрелка используется для отображения потока управления и используется тогда, когда необходимо показать, что по рассматриваемому потоку будет происходить дальнейшее выполнение процесса только в том случае, если выполнится условие, указанное в названии потока. В случае, если условный поток управления является исходящим от процесса, то у основания линии изображается небольшой ромбик (Рисунок 11). Если же условный поток управления является исходящим от шлюза, то никакого ромбика у основания линии не будет.<br><img src="media/image23.png" style="width:200px; height:auto;" alt="Рисунок 11"><br>Рисунок 11</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Поток сообщений</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;"><img src="media/image24.png" style="width:100px; height:auto;" alt="Поток сообщений"></td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Стрелка используется для отображения межпроцессного взаимодействия — для связи элементов потока со свернутыми пулами. При необходимости поток может быть именованным. Поток сообщений не отображает ход выполнения процесса, а показывает передачу сообщений или объектов из одного процесса в другой процесс или внешнюю ссылку.</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Пул</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;"><img src="media/image25.png" style="width:100px; height:auto;" alt="Пул"></td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Пул предназначен для отображения потока рассматриваемого процесса. Содержимое пула — это и есть тот процесс, диаграмма которого рассматривается. На диаграмме развернутый пул может быть только один.</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Дорожка</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;"><img src="media/image26.png" style="width:100px; height:auto;" alt="Дорожка"></td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Дорожка предназначена для отображения исполнителей задач и подпроцессов процесса BPMN (оргединиц или объектов деятельности). Внутри блока помещается наименование исполнителя.</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Документы</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;"><img src="media/image27.png" style="width:60px; height:auto;" alt="Документы"></td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Используется для отображения на диаграмме документов, сопровождающих выполнение процесса. Рядом с блоком размещается наименование документа. В качестве объекта данных может использоваться объект справочников: Бумажный документ, Электронный документ.</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Программные продукты</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;"><img src="media/image28.png" style="width:100px; height:auto;" alt="Программные продукты"></td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Используется для отображения на диаграмме программных продуктов, сопровождающих выполнение процесса. Рядом с блоком размещается наименование продукта.</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Базы данных</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;"><img src="media/image29.png" style="width:60px; height:auto;" alt="Базы данных"></td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Используется для отображения на диаграмме базы данных, сопровождающей выполнение процесса. Рядом с символом размещается наименование базы данных.</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Сноска</td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;"><img src="media/image30.png" style="width:100px; height:auto;" alt="Сноска"></td>
+<td style="border:1px solid #ddd; padding:10px; vertical-align:top;">Выносной символ, предназначенный для нанесения текстовых комментариев. Символ может быть использован на диаграммах процессов в любых нотациях.</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Нотация EPC: событийные цепочки процессов</h2>
+<p>EPC (Event-Driven Process Chain — событийная цепочка процессов) используется для описания процессов нижнего уровня. Диаграмма процесса в нотации EPC представляет собой упорядоченную комбинацию событий и функций. Для каждой функции могут быть определены начальные и конечные события, участники, исполнители, материальные и документальные потоки, сопровождающие её, а также проведена декомпозиция на более низкие уровни. Декомпозиция может производиться в нотациях EPC или BPMN.</p>
+
+<p><strong>Таблица 2 – Сущности EPC модели</strong></p>
+<table style="width:100%; border-collapse:collapse; margin:20px 0;">
+<thead>
+<tr style="background-color:#f0f2f5;">
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Название</th>
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Графический символ</th>
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="border:1px solid #ddd; padding:10px;">Функция</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image31.png" style="width:80px; height:auto;" alt="Функция"></td><td style="border:1px solid #ddd; padding:10px;">Блок представляет собой функцию — действие или набор действий, выполняемых над исходным объектом (документом, материальным объектом и прочим) с целью получения заданного результата. Внутри блока помещается наименование функции. Временная последовательность выполнения функций задается расположением функций на диаграмме процесса сверху вниз.</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Событие</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image32.png" style="width:80px; height:auto;" alt="Событие EPC"></td><td style="border:1px solid #ddd; padding:10px;">Событие — состояние, которое является существенным для целей управления бизнесом и оказывает влияние или контролирует дальнейшее развитие одного или более бизнес-процессов. Символ отображает события, активизирующие функции или порождаемые функциями. Внутри блока помещается наименование события.</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Стрелка</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image33.png" style="width:100px; height:auto;" alt="Стрелка"></td><td style="border:1px solid #ddd; padding:10px;">Стрелка отображает связи элементов диаграммы процесса EPC между собой. Связь может быть направленной и ненаправленной в зависимости от соединяемых элементов и типа связи.</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Оператор AND («И»)</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image34.png" style="width:30px; height:auto;" alt="AND"></td><td style="border:1px solid #ddd; padding:10px;">Оператор «И» используется для обозначения слияния/ветвления как функций, так и событий. Если завершение выполнения функции должно инициировать одновременно несколько событий, то это обозначается с помощью оператора «И», следующего после функции и перед событиями.</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Оператор OR («ИЛИ»)</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image35.png" style="width:30px; height:auto;" alt="OR"></td><td style="border:1px solid #ddd; padding:10px;">Оператор «ИЛИ» используется для обозначения слияния/ветвления функций и для слияния событий. По правилам нотации EPC после одиночного события не может следовать разветвляющий оператор «ИЛИ». Если завершение выполнения функции может инициировать одно или несколько событий, то это обозначается с помощью оператора «ИЛИ», следующего после функции и перед событиями.</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Оператор XOR («Исключающее ИЛИ»)</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image36.png" style="width:30px; height:auto;" alt="XOR"></td><td style="border:1px solid #ddd; padding:10px;">Оператор «Исключающее ИЛИ» используется для обозначения слияния/ветвления функций и для слияния событий. По правилам нотации EPC после одиночного события не может следовать разветвляющий оператор «Исключающее ИЛИ». Если завершение выполнения функции может инициировать только одно из событий в зависимости от условия, то это обозначается с помощью оператора «Исключающее ИЛИ», следующего за функцией и перед событиями.<br><img src="media/image37.png" style="width:150px; height:auto;" alt="Рисунок 12"><br>Рисунок 12</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Интерфейс процесса</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image38.png" style="width:80px; height:auto;" alt="Интерфейс"></td><td style="border:1px solid #ddd; padding:10px;">Символ, обозначающий внешний (по отношению к текущей диаграмме) процесс или функцию. Используется для указания взаимосвязи процессов: обозначает предыдущий или следующий процесс по отношению к диаграмме рассматриваемого процесса; обозначает процесс, откуда поступил или куда передается объект. Внутри блока помещается наименование внешнего процесса.<br><img src="media/image39.png" style="width:200px; height:auto;" alt="Рисунок 13"><br>Рисунок 13</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Оргединицы</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image40.png" style="width:80px; height:auto;" alt="Оргединицы"></td><td style="border:1px solid #ddd; padding:10px;">Используется для отображения на диаграмме оргединиц (должности, подразделения, роли, внешней оргединицы) — исполнителей, владельцев или участников функций. Внутри блока помещается наименование оргединицы.</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Бумажный документ</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image41.png" style="width:80px; height:auto;" alt="Бумажный документ"></td><td style="border:1px solid #ddd; padding:10px;">Используется для отображения на диаграмме бумажных документов, сопровождающих выполнение функции. Внутри блока помещается наименование бумажного документа.</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Материальные объект</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image42.png" style="width:80px; height:auto;" alt="Материальный объект"></td><td style="border:1px solid #ddd; padding:10px;">Используется для отображения на диаграмме материальных объектов, сопровождающих выполнение функции. Внутри блока помещается наименование материального объекта.</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Информационная система</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image43.png" style="width:80px; height:auto;" alt="Информационная система"></td><td style="border:1px solid #ddd; padding:10px;">Используется для отображения на диаграмме информационной системы, поддерживающей выполнение функции. Внутри блока помещается наименование информационной системы.</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Термин</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image44.png" style="width:100px; height:auto;" alt="Термин"></td><td style="border:1px solid #ddd; padding:10px;">Используется для отображения на диаграмме объектов, сопровождающих выполнение функции. Наименования этих объектов — термины, используемые в организации. Внутри блока помещается наименование термина. Символ может быть использован для обозначения данных, передаваемых между процессами или обрабатываемых при выполнении процессов. Символ может быть также использован для обозначения статусов бумажных/электронных документов и других объектов справочника «Функциональные объекты».</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Группа объектов</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image45.png" style="width:80px; height:auto;" alt="Группа объектов"></td><td style="border:1px solid #ddd; padding:10px;">Используется для отображения на диаграмме группы объектов, сопровождающих выполнение функции, например, «Документация по проекту». Внутри блока помещается наименование группы объектов.</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Прочее</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image46.png" style="width:80px; height:auto;" alt="Прочее"></td><td style="border:1px solid #ddd; padding:10px;">Используется для отображения на диаграмме потоков объектов, которые нельзя отнести ни к одной из предопределенных групп справочника "Функциональные объекты". Внутри блока помещается наименование прочего объекта.</td></tr>
+</tbody>
+</table>
+
+<p><strong>Правила моделирования процессов в нотации EPC</strong></p>
+<ol>
+<li>Диаграмма функции EPC должна начинаться как минимум одним стартовым событием (стартовое событие может следовать за интерфейсом процесса) и завершаться как минимум одним конечным событием (конечное событие может предшествовать интерфейсу процесса).</li>
+<li>События и функции по ходу выполнения процесса должны чередоваться. Решения о дальнейшем ходе выполнения процесса принимаются функциями.</li>
+<li>Рекомендуемое количество функций на диаграмме — не более 20. Если количество функций диаграммы значительно превышает 20, то существует вероятность, что неправильно выделены процессы на верхнем уровне и необходимо произвести корректировку модели.</li>
+<li>События и функции должны содержать строго по одной входящей и одной исходящей связи, отражающей ход выполнения процесса.</li>
+<li>События и операторы, окружавшие функцию на вышележащей диаграмме, должны быть начальными/результирующими событиями и операторами на диаграмме декомпозиции функции.</li>
+</ol>
+
+<h2>Функциональное моделирование IDEF0</h2>
+<p>IDEF0 — нотация графического моделирования, используемая для создания функциональной модели, отображающей структуру и функции системы, а также потоки информации и материальных объектов, связывающих эти функции. Стандарт IDEF0 утверждён в США в 1993 как Федеральный стандарт обработки информации. В России находится в статусе руководящего документа с 2000 года и в настоящее время в качестве стандарта не утверждён. Тем не менее методология IDEF0 является одним из популярных подходов для описания бизнес-процессов. К её особенностям относятся:</p>
+<ol>
+<li><strong>Контекстная диаграмма.</strong> Самая верхняя диаграмма, на которой объект моделирования представлен единственным блоком с граничными стрелками. Эта диаграмма называется A-0 (А минус нуль). Стрелки на этой диаграмме отображают связи объекта моделирования с окружающей средой. Диаграмма A-0 устанавливает область моделирования и её границу. Пример диаграммы A-0 приведён на рисунке 14.</li>
+<li><strong>Поддержка декомпозиции.</strong> Нотация IDEF0 поддерживает последовательную декомпозицию функций до требуемого уровня детализации. Дочерняя диаграмма, создаваемая при декомпозиции, охватывает ту же область, что и родительская функция, но описывает её более подробно. Согласно методологии IDEF0 при декомпозиции стрелки родительской функции переносятся на дочернюю диаграмму в виде граничных стрелок.</li>
+<li><strong>Доминирование.</strong> Блоки модели IDEF0 на неконтекстной диаграмме должны располагаться по диагонали — от левого верхнего угла диаграммы до правого нижнего в порядке присвоенных номеров. Блоки на диаграмме, расположенные вверху слева, «доминируют» над блоками, расположенными внизу справа. «Доминирование» понимается как влияние, которое блок оказывает на другие блоки диаграммы.</li>
+<li><strong>Выделение 4 типов стрелок.</strong> Выделяются следующие типы стрелок: «Вход», «Выход», «Механизм», «Управление». Входы преобразуются или расходуются функцией, чтобы создать то, что появится на его выходе. Управления определяют условия, необходимые функции, чтобы произвести правильный выход. Выходы — данные или материальные объекты, произведённые функцией. Механизмы идентифицируют средства, поддерживающие выполнение функции. Таким образом, блок IDEF0 показывает преобразование входа в выход с помощью механизмов с учётом управляющих воздействий.</li>
+</ol>
+
+<figure><img src="media/image47.png" style="max-width:100%;" alt="Контекстная диаграмма" /><figcaption>Рисунок 14 – Контекстная диаграмма</figcaption></figure>
+
+<p><strong>Таблица 3 – Сущности IDEF0 модели</strong></p>
+<table style="width:100%; border-collapse:collapse; margin:20px 0;">
+<thead>
+<tr style="background-color:#f0f2f5;">
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Название</th>
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Графический символ</th>
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Описание</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="border:1px solid #ddd; padding:10px;">Функция</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image48.png" style="width:100px; height:auto;" alt="Функция IDEF0"></td><td style="border:1px solid #ddd; padding:10px;">Функция обозначается прямоугольным блоком. Внутри каждого блока помещается его имя и номер. Имя должно быть активным глаголом, глагольным оборотом или отглагольным существительным. Номер блока размещается в правом нижнем углу. Номера блоков используются для идентификации на диаграмме и в соответствующем тексте.</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Стрелка</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image49.png" style="width:100px; height:auto;" alt="Стрелка IDEF0"></td><td style="border:1px solid #ddd; padding:10px;">Стрелки обозначают входящие и исходящие из функции объекты (данные). Каждая сторона функционального блока имеет стандартное значение с точки зрения связи блок-стрелка. В свою очередь, сторона блока, к которой присоединена стрелка, однозначно определяет ее роль. Стрелки, входящие в левую сторону блока — входы. Стрелки, входящие в блок сверху — управления. Стрелки, покидающие функцию справа — выходы, т.е. данные или материальные объекты, произведенные функцией. Стрелки, подключенные к нижней стороне блока, представляют механизмы.</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Туннелированная стрелка</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image50.png" style="width:150px; height:auto;" alt="Туннелированная стрелка"><br><img src="media/image51.png" style="width:120px; height:auto;" alt="Туннель у блока"></td><td style="border:1px solid #ddd; padding:10px;">Туннелированные стрелки означают, что данные, передаваемые с помощью этих стрелок, не рассматриваются на родительской диаграмме и/или на дочерней диаграмме. Стрелка, помещенная в туннель там, где она присоединяется к блоку, означает, что данные, выраженные этой стрелкой, не обязательны на следующем уровне декомпозиции. Стрелка, помещаемая в туннель на свободном конце, означает, что выраженные ею данные отсутствуют на родительской диаграмме. Туннелированные стрелки могут быть использованы на диаграммах функции в нотации IDEF0 и процессов в нотациях «Basic Flowchart», «Cross-functional Flowchart».</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Внешняя ссылка</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image52.png" style="width:40px; height:auto;" alt="Внешняя ссылка"></td><td style="border:1px solid #ddd; padding:10px;">Символ обозначает место, сущность или оргединицу, которые находятся за границами моделируемой системы. Внешние ссылки используются для обозначения источника или приемника стрелки вне модели. На диаграммах Внешняя ссылка изображается в виде квадрата, рядом с которым показано наименование Внешней ссылки. Внешние ссылки могут быть использованы на диаграммах процессов и функций в любых нотациях.</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Междиаграммная ссылка</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image53.png" style="width:100px; height:auto;" alt="Междиаграммная ссылка"></td><td style="border:1px solid #ddd; padding:10px;">Символ, обозначающий другую диаграмму. Междиаграммная ссылка служит для обозначения перехода стрелки на диаграмму другой функции или процесса без отображения стрелки на вышележащей диаграмме (при использовании иерархических моделей). В качестве междиаграммной ссылки не может выступать диаграмма процесса в нотациях EPC и BPMN.</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Ссылка на единицу деятельности</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image54.png" style="width:80px; height:auto;" alt="Ссылка на единицу деятельности"></td><td style="border:1px solid #ddd; padding:10px;">Символ обозначает ссылку на типовую модель единицы деятельности.</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Сноска</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image55.png" style="width:100px; height:auto;" alt="Сноска"></td><td style="border:1px solid #ddd; padding:10px;">Выносной символ, предназначенный для нанесения комментариев. Символ может быть использован на диаграммах функций и процессов в любых нотациях.</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">Текст</td><td style="border:1px solid #ddd; padding:10px;"><img src="media/image56.png" style="width:100px; height:auto;" alt="Текст"></td><td style="border:1px solid #ddd; padding:10px;">Комментарий без сноски. Символ может быть использован на диаграммах функций и процессов в любых нотациях.</td></tr>
+</tbody>
+</table>
+
+<h2>Сравнительный анализ нотаций и выбор стандарта</h2>
+<p>Рассмотрев три распространённые нотации для моделирования бизнес-процессов — BPMN, EPC и IDEF0 — можно сделать следующие выводы с практической точки зрения:</p>
+<ol>
+<li>IDEF0 применим для функционального моделирования, когда необходимо показать, какие ресурсы (механизмы) и управляющие воздействия используются в работе. Однако его схемы сложны для восприятия неподготовленным пользователем, а логика последовательности действий прослеживается с трудом. Это инструмент системных аналитиков для «верхнеуровневого» взгляда.</li>
+<li>EPC интуитивно понятна за счёт чередования событий и функций, но строгие правила (обязательное событие до и после функции) приводят к тому, что даже небольшой процесс превращается в сложную схему. Из-за этого EPC-диаграммы сложно читать при наличии множества развилок и параллельных веток.</li>
+<li>BPMN вобрала в себя лучшее из разных нотаций. Она предлагает богатый, но при этом понятный визуальный язык, который одинаково хорошо воспринимается и бизнес-пользователями, и IT-специалистами.</li>
+</ol>
+<p>Выбор BPMN в качестве стандарта де-факто объясняется ключевыми причинами:</p>
+<ol>
+<li><strong>Понятность для бизнеса.</strong> Базовые элементы BPMN (действия, события, развилки) интуитивно ясны. Менеджер или владелец бизнеса, не погружённый в тонкости нотации, глядя на схему, сразу видит: кто за что отвечает (дорожки), где происходит выбор (шлюзы) и что запускает процесс (стартовые события). Это делает BPMN оптимальным языком для коммуникации между заказчиком и исполнителем.</li>
+<li><strong>Единый стандарт.</strong> В отличие от других подходов, BPMN — это международный стандарт (ISO/IEC 19510). Это означает, что аналитик, изучивший BPMN в одной компании, без проблем поймёт схемы в любой другой. Программные продукты поддерживают импорт и экспорт BPMN-диаграмм, что позволяет выстраивать бесшовную работу с процессами на всех этапах — от описания до анализа и улучшения.</li>
+</ol>
+<h2>Выводы</h2>
+<ol>
+<li>BPMN оперирует пятью категориями элементов (поток, данные, соединения, зоны ответственности, артефакты), обеспечивая полноту описания процессов.</li>
+<li>Шлюзы BPMN различаются по логике ветвления: AND (параллельный), XOR (эксклюзивный), OR (не эксклюзивный) и эксклюзивный по событиям.</li>
+<li>EPC требует обязательного чередования событий и функций, что приводит к перегруженности диаграмм при усложнении процесса. Рекомендуемая граница — не более 20 функций.</li>
+<li>IDEF0 фокусируется на функциональном моделировании (входы, выходы, управления, механизмы), но не предназначен для отображения временной последовательности.</li>
+<li>BPMN рекомендован как основная нотация курса.</li>
+</ol>
+`,
+
+ lecture3: `
+<h1>Лекция 3. Информационные потоки в бизнес-процессах: источники данных и архитектура хранения</h1>
+<h2>План</h2>
+<ol>
+<li>Классификация источников данных в организации</li>
+<li>Базы данных как основа информационной инфраструктуры</li>
+<li>Сравнительный анализ реляционных баз данных и электронных таблиц</li>
+<li>Архитектура обработки данных: от операционных систем к BI-системам</li>
+</ol>
+<p>Обращаясь к материалам Лекции 1, где создавался процесс «Оформление заказа в интернет-магазине» или «Обслуживание клиента в столовой», следует отметить, что каждый шаг в этих схемах в реальном цифровом бизнесе оставляет цифровой след.</p>
+<p>Например, нажатие клиентом кнопки «Оформить заказ» создаёт запись в системе. Оплата картой изменяет остаток на счёте и статус заказа. Доставка посылки курьером обновляет информацию о местоположении. Этот цифровой след, который бизнес собирает о своей работе, и представляет собой данные.</p>
+<p><strong>Ключевое положение:</strong> бизнес-процесс (способ организации работы) и данные (фиксируемая информация) являются взаимосвязанными аспектами одной системы. Процесс порождает данные, а данные обеспечивают функционирование и развитие процесса.</p>
+
+<h2>Классификация источников данных в организации</h2>
+<p>Данные всегда имеют источник. В бизнесе все источники данных делятся на две большие группы: внутренние и внешние.</p>
+<p><strong>Внутренние источники</strong> — данные, создаваемые внутри компании в ходе её повседневной деятельности. Они напрямую связаны с бизнес-процессами.</p>
+<p>К внутренним источникам относятся:</p>
+<ol>
+<li><strong>Операционные системы (CRM, ERP).</strong> Внесение менеджером карточки нового клиента или оформление продажи фиксируется в CRM. Это основной «генератор» данных о продажах и взаимодействии с клиентами.</li>
+<li><strong>Бухгалтерские системы.</strong> Фиксируют все движения денег: оплаты, начисления зарплаты, закупки.</li>
+<li><strong>Корпоративный сайт и мобильное приложение.</strong> Каждый клик, просмотр товара, добавление в корзину формируют данные о поведении пользователей.</li>
+<li><strong>Склады и логистика (WMS).</strong> Системы учёта товаров фиксируют поступление, количество и отгрузку товаров со склада.</li>
+</ol>
+<p>В процессе работы компании эти системы автоматически наполняются данными. Хаотичный, не описанный процесс приводит к тому, что данные в этих системах становятся противоречивыми и непригодными для анализа.</p>
+<p><strong>Внешние источники</strong> — данные, получаемые компанией из окружающей среды для анализа рынка и принятия стратегических решений:</p>
+<ol>
+<li>Данные государственной статистики (сведения о населении, доходах, инфляции).</li>
+<li>Информация о конкурентах (цены, акции, ассортимент).</li>
+<li>Социальные сети и отзывы (мнения клиентов о продукте или услугах).</li>
+<li>Данные от партнёров и поставщиков (цены, условия поставок, графики отгрузок).</li>
+</ol>
+
+<p><strong>Таблица 5 – Типы источников</strong></p>
+<table style="width:100%; border-collapse:collapse; margin:20px 0;">
+<thead>
+<tr style="background-color:#f0f2f5;">
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Тип источника</th>
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Примеры</th>
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Что дают бизнесу</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd; padding:10px;">Внутренние</td>
+<td style="border:1px solid #ddd; padding:10px;">CRM, ERP, бухгалтерия, сайт, складские системы.</td>
+<td style="border:1px solid #ddd; padding:10px;">Информация о работе компании, клиентах, заказах.</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px;">Внешние</td>
+<td style="border:1px solid #ddd; padding:10px;">Статистика, соцсети, данные партнеров, отчеты конкурентов.</td>
+<td style="border:1px solid #ddd; padding:10px;">Информация о рынке, трендах, возможностях.</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px;">Данные от людей</td>
+<td style="border:1px solid #ddd; padding:10px;">Анкеты, опросы, интервью, ввод данных в формы.</td>
+<td style="border:1px solid #ddd; padding:10px;">Первичная информация, которой еще нет в системах.</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Базы данных как основа информационной инфраструктуры</h2>
+<p>Данные представляют собой тысячи и миллионы записей, требующих систематизированного хранения. Хранение в виде множества файлов на компьютере неудобно и ненадёжно. Для этих целей используются базы данных (БД).</p>
+<p><strong>База данных</strong> — совокупность структурированных данных, организованных для удобного хранения, поиска и обработки.</p>
+<p>Наиболее наглядная аналогия — большая таблица в Microsoft Excel. Представим таблицу, в которой хранятся все заказы интернет-магазина.</p>
+<figure><img src="media/image57.jpeg" style="max-width:100%;" alt="Пример данных о заказах" /><figcaption>Рисунок 15 – Пример данных о заказах</figcaption></figure>
+<p>В терминах баз данных эта таблица называется «списком» или таблицей БД. В ней присутствуют:</p>
+<ul>
+<li><strong>Поля (столбцы):</strong> «Номер заказа», «Дата», «Клиент» и т.д. Поле — одна характеристика объекта.</li>
+<li><strong>Записи (строки):</strong> каждая строка — информация об одном конкретном заказе.</li>
+</ul>
+
+<h2>Сравнительный анализ реляционных баз данных и электронных таблиц</h2>
+<p>Excel — программа для работы с электронными таблицами, имеющая жёсткие ограничения. Базы данных созданы для работы с гораздо большими объёмами информации и множеством пользователей одновременно.</p>
+
+<p><strong>Таблица 6 – Отличие базы данных от Excel</strong></p>
+<table style="width:100%; border-collapse:collapse; margin:20px 0;">
+<thead>
+<tr style="background-color:#f0f2f5;">
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Характеристика</th>
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Excel</th>
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Профессиональная СУБД</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd; padding:10px;">Объем данных</td>
+<td style="border:1px solid #ddd; padding:10px;">Ограничен (до ~1 млн строк).</td>
+<td style="border:1px solid #ddd; padding:10px;">Практически безграничен (миллиарды строк).</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px;">Количество пользователей</td>
+<td style="border:1px solid #ddd; padding:10px;">Один человек.</td>
+<td style="border:1px solid #ddd; padding:10px;">Сотни и тысячи одновременно.</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px;">Скорость поиска</td>
+<td style="border:1px solid #ddd; padding:10px;">Замедляется на больших объемах.</td>
+<td style="border:1px solid #ddd; padding:10px;">Высокая даже на огромных данных (благодаря индексам).</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px;">Надежность</td>
+<td style="border:1px solid #ddd; padding:10px;">Файл может «сломаться», сложно восстанавливать данные.</td>
+<td style="border:1px solid #ddd; padding:10px;">Есть механизмы резервного копирования и восстановления.</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px;">Связи между таблицами</td>
+<td style="border:1px solid #ddd; padding:10px;">Сложно поддерживать, легко ошибиться.</td>
+<td style="border:1px solid #ddd; padding:10px;">Строгие правила связей обеспечивают целостность данных.</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px;">Безопасность</td>
+<td style="border:1px solid #ddd; padding:10px;">Пароль на файл (слабая защита).</td>
+<td style="border:1px solid #ddd; padding:10px;">Гибкая система прав доступа для разных пользователей.</td>
+</tr>
+</tbody>
+</table>
+
+<p>Таким образом, база данных — аналог Excel, но с расширенными возможностями. Она лежит в основе любой серьёзной информационной системы — от интернет-магазина до банковского приложения. Управление базой данных осуществляется специальным программным обеспечением — системой управления базами данных (СУБД).</p>
+
+<h2>Архитектура обработки данных: от операционных систем к BI-системам</h2>
+<p>Для понимания связи бизнес-процессов, баз данных и аналитики рассмотрим упрощённую схему движения данных в компании.</p>
+<figure><img src="media/image58.png" style="max-width:100%;" alt="Путь данных в бизнесе" /><figcaption>Рисунок 16 – Путь данных в бизнесе</figcaption></figure>
+<ol>
+<li><strong>Бизнес-процесс (Источник).</strong> Оформление заказа в CRM, отметка о доставке в приложении — действие в рамках бизнес-процесса.</li>
+<li><strong>База данных (СУБД).</strong> Система CRM сохраняет информацию об этом действии в своей оперативной базе данных. Это первичные данные, необходимые для ежедневной работы.</li>
+<li><strong>Хранилище данных (Data Warehouse).</strong> Для анализа истории и снижения нагрузки на оперативные системы данные копируются в специальное хранилище. Там они очищаются, приводятся к единому формату и структурируются.</li>
+<li><strong>BI-система и отчёты.</strong> Аналитики с помощью BI-инструментов (Tableau, Power BI) подключаются к хранилищу и строят структурированные графики и дашборды для руководства. На этом этапе данные превращаются в информацию для принятия решений.</li>
+</ol>
+<p>Качество отчёта напрямую зависит от корректности и единообразия фиксации данных на первом шаге. BI-система не исправляет неупорядоченность, заложенную на уровне бизнес-процессов.</p>
+
+<h2>Вывод</h2>
+<ol>
+<li>Бизнес-процесс и данные — две стороны одной медали: процесс порождает данные, данные обеспечивают работу процесса.</li>
+<li>Источники данных разделяются на внутренние (CRM, ERP, WMS, сайты) и внешние (статистика, соцсети, партнёры). Качество аналитики зависит от корректности внутренней фиксации.</li>
+<li>База данных (СУБД) принципиально отличается от Excel: поддерживает миллиарды строк, тысячи пользователей, индексы, ссылочную целостность и безопасность.</li>
+<li>Архитектура обработки данных: бизнес-процесс → оперативная БД → хранилище данных → BI-система. Прямой доступ к оперативной БД для аналитики недопустим.</li>
+</ol>
+`,
+        lecture4: `
+<h1>Лекция 4. Основы языка SQL: реляционные базы данных и извлечение информации</h1>
+<h2>План</h2>
+<ol>
+<li>Роль SQL в информационных системах управления</li>
+<li>Установка и настройка DB Browser for SQLite</li>
+<li>Создание таблиц и вставка данных</li>
+<li>Базовые операции выборки: SELECT, WHERE, ORDER BY</li>
+<li>Логические операторы и условия фильтрации</li>
+</ol>
+
+<h2>Роль SQL в информационных системах управления</h2>
+<p>Любое действие в бизнес-процессе оставляет след в базе данных. Оформление заказа клиентом создаёт запись в таблице «Заказы». Добавление нового клиента сотрудником создаёт строку в таблице «Клиенты». Однако простого хранения данных недостаточно — бизнесу необходимо задавать этим данным вопросы и получать ответы.</p>
+<p>Если представить базу данных как склад с информацией, то SQL (Structured Query Language — язык структурированных запросов) является инструментом для взаимодействия с этим складом. SQL позволяет задавать вопросы, получать ответы и управлять данными.</p>
+<p>В рамках данного курса изучается только чтение данных. Основная задача — научиться получать информацию для управления бизнесом.</p>
+
+<h2>Установка и настройка DB Browser for SQLite</h2>
+<p>Для работы с SQL и базами данных используется DB Browser for SQLite — бесплатный, простой и наглядный инструмент с открытым исходным кодом, позволяющий создавать базы данных, просматривать таблицы и выполнять SQL-запросы.</p>
+<ol>
+<li>Откройте браузер и перейдите по адресу <a href="http://sqlitebrowser.org/" target="_blank">http://sqlitebrowser.org/</a>.</li>
+</ol>
+<figure><img src="media/image59.png" style="max-width:100%;" alt="Переход на сайт для скачивания DB Browser for SQLite" /><figcaption>Рисунок 17 – Переход на сайт для скачивания DB Browser for SQLite</figcaption></figure>
+<ol start="2">
+<li>Нажмите кнопку «Download». Для пользователей Windows выберите вариант «DB Browser for SQLite - Standard installer for 64-bit Windows». Скачивание начнется автоматически.</li>
+</ol>
+<figure><img src="media/image60.png" style="max-width:100%;" alt="Скачивание DB Browser for SQLite" /><figcaption>Рисунок 18 – Скачивание DB Browser for SQLite</figcaption></figure>
+<ol start="3">
+<li>Найдите скачанный файл с расширением .msi (например, DB.Browser.for.SQLite-3.12.2-win64.msi) и запустите его двойным щелчком.</li>
+<li>На приветственном экране нажмите «Запустить».</li>
+</ol>
+<figure><img src="media/image61.png" style="max-width:100%;" alt="Запуск DB Browser for SQLite" /><figcaption>Рисунок 19 – Запуск DB Browser for SQLite</figcaption></figure>
+<ol start="5">
+<li>Ознакомьтесь с лицензионным соглашением и нажмите «Next».</li>
+</ol>
+<figure><img src="media/image62.png" style="max-width:100%;" alt="Лицензионное соглашение DB Browser for SQLite" /><figcaption>Рисунок 20 – Лицензионное соглашение DB Browser for SQLite</figcaption></figure>
+<ol start="6">
+<li>Выберите папку для установки (можно оставить предложенную по умолчанию) и нажмите «Next».</li>
+<li>Нажмите «Install» для начала установки.</li>
+<li>После завершения установки нажмите «Finish».</li>
+</ol>
+<p><strong>Просмотр содержимого таблицы</strong></p>
+<p>После установки запустите DB Browser for SQLite. Создайте базу данных:</p>
+<ol>
+<li>В главном меню выберите «Файл» (File) → «Новая база данных» (New Database).</li>
+</ol>
+<figure><img src="media/image63.png" style="max-width:100%;" alt="Создание новой базы данных" /><figcaption>Рисунок 21 – Создание новой базы данных</figcaption></figure>
+<ol start="2">
+<li>В открывшемся диалоговом окне выберите папку, где вы хотите сохранить базу данных. Назовите файл business.db (расширение .db — стандартное для SQLite).</li>
+</ol>
+<figure><img src="media/image64.png" style="max-width:100%;" alt="Сохранение базы данных" /><figcaption>Рисунок 22 – Сохранение базы данных</figcaption></figure>
+<ol start="3">
+<li>Нажмите «Сохранить» (Save).</li>
+</ol>
+<p>После создания базы данных может автоматически открыться окно «Редактирование определения таблицы» (Edit Table Definition). Пока закройте его, нажав «Отмена» (Cancel).</p>
+<p>Создадим первые таблицы, но сделаем это не через графический интерфейс, а с помощью SQL — так можно лучше понять, как работает язык.</p>
+
+<h2>Создание таблиц и вставка данных</h2>
+<p>Прежде чем начать изучать команду SELECT — нужны данные, с которыми вы будете работать. Создайте таблицы «Клиенты» и «Заказы».</p>
+<ol>
+<li>В DB Browser for SQLite перейдите на вкладку «Выполнить SQL» (Execute SQL). Здесь вы будете писать и выполнять SQL-команды.</li>
+</ol>
+<figure><img src="media/image65.png" style="max-width:100%;" alt="Переход во вкладку Execute SQL" /><figcaption>Рисунок 23 – Переход во вкладку Execute SQL</figcaption></figure>
+<ol start="2">
+<li>Скопируйте следующий код в текстовое поле на вкладке «Выполнить SQL»:</li>
+</ol>
+<pre><code>CREATE TABLE "Клиенты" (
+  "id" INTEGER,
+  "name" TEXT NOT NULL,
+  "phone" TEXT,
+  "city" TEXT,
+  PRIMARY KEY("id" AUTOINCREMENT)
+);
+
+CREATE TABLE "Заказы" (
+  "order_id" INTEGER,
+  "client_name" TEXT NOT NULL,
+  "product" TEXT NOT NULL,
+  "amount" INTEGER,
+  "status" TEXT,
+  "order_date" TEXT,
+  PRIMARY KEY("order_id" AUTOINCREMENT)
+);</code></pre>
+<ul>
+<li><strong>CREATE TABLE "..."</strong> — команда для создания новой таблицы.</li>
+<li>Внутри скобок перечисляются столбцы (поля) таблицы.</li>
+<li><strong>INTEGER</strong> — целочисленный тип данных (для id, сумм).</li>
+<li><strong>TEXT</strong> — текстовый тип данных (для имен, городов, статусов).</li>
+<li><strong>NOT NULL</strong> — означает, что это поле обязательно должно быть заполнено, оно не может быть пустым.</li>
+<li><strong>PRIMARY KEY("id" AUTOINCREMENT)</strong> — указывает, что поле id является первичным ключом (уникальным идентификатором записи), и его значение будет автоматически увеличиваться при добавлении новых записей.</li>
+</ul>
+<ol start="3">
+<li>После того как вы вставили код, нажмите кнопку «Выполнить все» (Execute all).</li>
+</ol>
+<figure><img src="media/image66.png" style="max-width:100%;" alt="Выполнение SQL-запроса" /><figcaption>Рисунок 24 – Выполнение SQL-запроса</figcaption></figure>
+<ol start="4">
+<li>Перейдите на вкладку «Структура базы данных» (Database Structure). Можно заметить, что в вашей базе данных появились две таблицы: «Клиенты» и «Заказы».</li>
+</ol>
+<figure><img src="media/image67.png" style="max-width:100%;" alt="Просмотр созданных таблиц" /><figcaption>Рисунок 25 – Просмотр созданных таблиц</figcaption></figure>
+
+<h2>Базовые операции выборки: SELECT, WHERE, ORDER BY</h2>
+<p>Пока что таблицы пусты. Нужно добавить в них несколько записей, чтобы вам было с чем работать. На вкладке «Выполнить SQL» выполните следующий код:</p>
+<pre><code>INSERT INTO "Клиенты" (name, phone, city) VALUES
+('Иванов Иван', '89031234567', 'Москва'),
+('Петрова Анна', '89161234567', 'Санкт-Петербург'),
+('Сидоров Петр', '89261234567', 'Казань'),
+('Кузнецова Ольга', '89361234567', 'Москва');
+
+INSERT INTO "Заказы" (client_name, product, amount, status, order_date) VALUES
+('Иванов Иван', 'Ноутбук', 75000, 'Новый', '2026-03-10'),
+('Петрова Анна', 'Мышь', 1500, 'Доставлен', '2026-03-11'),
+('Иванов Иван', 'Клавиатура', 3200, 'Новый', '2026-03-12'),
+('Сидоров Петр', 'Монитор', 18000, 'В обработке', '2026-03-12'),
+('Кузнецова Ольга', 'Наушники', 4500, 'Новый', '2026-03-13');</code></pre>
+<ul>
+<li>Оператор <strong>INSERT INTO</strong> в SQL — это команда для добавления новых записей в таблицу базы данных.</li>
+<li>Самая частая форма записи — <strong>INSERT INTO table_name (column1, column2, ...) VALUES (value1, value2, ...)</strong>.</li>
+<li><strong>table_name</strong> — имя таблицы. Список столбцов не обязателен, но рекомендуется (иначе придётся указывать значения для всех полей).</li>
+<li><strong>VALUES</strong> — перечень данных, соответствующих указанным столбцам.</li>
+</ul>
+<p><strong>Важно!</strong> Количество и типы значений должны совпадать со структурой таблицы, иначе СУБД выдаст ошибку.</p>
+<p>После выполнения этих команд в ваших таблицах появятся данные. Чтобы убедиться в этом, дважды кликните на название таблицы на вкладке «Структура базы данных» и перейдите на вкладку «Просмотр данных» (Browse Data).</p>
+<figure><img src="media/image68.png" style="max-width:100%;" alt="Просмотр данных в таблице" /><figcaption>Рисунок 26 – Просмотр данных в таблице</figcaption></figure>
+
+<p><strong>Просмотр содержимого таблицы</strong></p>
+<p>Самый простой запрос, который можно задать базе данных — это просмотр данных в таблице. В SQL для этого используется команда SELECT (с англ. «выбрать») и оператор FROM (с англ. «из»). Звездочка * означает «все столбцы».</p>
+<pre><code>SELECT * FROM имя_таблицы;</code></pre>
+<figure><img src="media/image69.png" style="max-width:100%;" alt="Запрос для просмотра данных в таблице" /><figcaption>Рисунок 27 – Запрос для просмотра данных в таблице</figcaption></figure>
+<p>Запрос (Рисунок 27) вернул всю таблицу целиком — всех клиентов и все поля (столбцы) с информацией о них. Для менеджера по продажам это может быть полезно, но чаще всего им не нужны все данные сразу.</p>
+
+<p><strong>Выбор нужных столбцов</strong></p>
+<p>В SQL можно указать, какие конкретно столбцы вас интересуют.</p>
+<pre><code>SELECT столбец1, столбец2 FROM имя_таблицы;</code></pre>
+<p>Если нужны только имена и телефоны из таблицы «Клиенты», запрос будет выглядеть так:</p>
+<figure><img src="media/image70.png" style="max-width:100%;" alt="Запрос для выбора нужных столбцов" /><figcaption>Рисунок 28 – Запрос для выбора нужных столбцов</figcaption></figure>
+
+<p><strong>Как найти конкретные строки</strong></p>
+<p>В работе часто нужны не все записи, а только те, которые соответствуют определенному условию. Например, менеджеру нужно увидеть только те заказы, которые еще не обработаны.</p>
+<p>Для этого в SQL используется ключевое слово WHERE. Оно позволяет задать условие, которому должны удовлетворять строки, попадающие в результат.</p>
+<pre><code>SELECT столбцы FROM имя_таблицы WHERE условие;</code></pre>
+<p>Для таблицы «Заказы», где столбец фильтруется по статусу «Новый», запрос будет выглядеть вот так:</p>
+<figure><img src="media/image71.png" style="max-width:100%;" alt="Запрос для поиска конкретных строк" /><figcaption>Рисунок 29 – Запрос для поиска конкретных строк</figcaption></figure>
+
+<p><strong>Операторы сравнения</strong></p>
+<p>Вы уже использовали оператор «=», чтобы найти точное совпадение. Но в бизнесе часто требуются более сложные условия: например, найти все заказы на сумму больше 5000 рублей или все заказы, сделанные после определенной даты. Для этого в SQL есть операторы сравнения.</p>
+
+<p><strong>Таблица 9 – Основные операторы сравнения</strong></p>
+<table style="width:100%; border-collapse:collapse; margin:20px 0;">
+<thead>
+<tr style="background-color:#f0f2f5;">
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Оператор</th>
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Значение</th>
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border:1px solid #ddd; padding:10px;">=</td>
+<td style="border:1px solid #ddd; padding:10px;">Равно</td>
+<td style="border:1px solid #ddd; padding:10px;">status = 'Новый'</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px;"><> или !=</td>
+<td style="border:1px solid #ddd; padding:10px;">Не равно</td>
+<td style="border:1px solid #ddd; padding:10px;">city <> 'Москва'</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px;">></td>
+<td style="border:1px solid #ddd; padding:10px;">Больше</td>
+<td style="border:1px solid #ddd; padding:10px;">amount > 5000</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px;"><</td>
+<td style="border:1px solid #ddd; padding:10px;">Меньше</td>
+<td style="border:1px solid #ddd; padding:10px;">amount < 1000</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px;">>=</td>
+<td style="border:1px solid #ddd; padding:10px;">Больше или равно</td>
+<td style="border:1px solid #ddd; padding:10px;">amount >= 10000</td>
+</tr>
+<tr>
+<td style="border:1px solid #ddd; padding:10px;"><=</td>
+<td style="border:1px solid #ddd; padding:10px;">Меньше или равно</td>
+<td style="border:1px solid #ddd; padding:10px;">order_date <= '2026-03-12'</td>
+</tr>
+</tbody>
+</table>
+
+<p>Например, попробуем найти заказы на сумму больше 5000 рублей:</p>
+<figure><img src="media/image72.png" style="max-width:100%;" alt="Запрос для поиска заказов на сумму больше 5000 рублей" /><figcaption>Рисунок 30 – Запрос для поиска заказов на сумму больше 5000 рублей</figcaption></figure>
+<p>Или найдём всех клиентов не из Москвы:</p>
+<figure><img src="media/image73.png" style="max-width:100%;" alt="Запрос для поиска клиентов не из Москвы" /><figcaption>Рисунок 31 – Запрос для поиска клиентов не из Москвы</figcaption></figure>
+
+<h2>Логические операторы и условия фильтрации</h2>
+<p>Иногда одного условия недостаточно. Может потребоваться найти заказы, которые одновременно являются новыми и дорогими. Или клиентов, которые живут либо в Москве, либо в Санкт-Петербурге. Для этого в SQL есть логические операторы AND (и) и OR (или).</p>
+<p><strong>Пример с AND</strong></p>
+<p>Найти новые заказы на сумму больше 4000 рублей:</p>
+<figure><img src="media/image74.png" style="max-width:100%;" alt="Запрос для нахождения новых заказов на сумму больше 4000 рублей" /><figcaption>Рисунок 32 – Запрос для нахождения новых заказов на сумму больше 4000 рублей</figcaption></figure>
+<p><strong>Пример с OR</strong></p>
+<p>Найти клиентов из Москвы или Санкт-Петербурга:</p>
+<figure><img src="media/image75.png" style="max-width:100%;" alt="Запрос для поиска клиентов из Москвы или Санкт-Петербурга" /><figcaption>Рисунок 33 – Запрос для поиска клиентов из Москвы или Санкт-Петербурга</figcaption></figure>
+
+<p><strong>Упорядочивание результатов: ORDER BY</strong></p>
+<p>Когда запрос возвращает много строк, бывает полезно отсортировать их. Например, показать заказы от самых дорогих к самым дешевым или отсортировать клиентов по алфавиту. Для этого используется ORDER BY.</p>
+<p><em>Синтаксис</em>: <code>SELECT * FROM имя_таблицы ORDER BY столбец [ASC|DESC];</code></p>
+<p><strong>ASC</strong> — сортировка по возрастанию (от меньшего к большему, от А до Я). Это значение по умолчанию.</p>
+<p><strong>DESC</strong> — сортировка по убыванию (от большего к меньшему, от Я до А).</p>
+<p>К примеру, покажем все заказы, отсортированные по сумме (от самых дорогих к самым дешёвым):</p>
+<figure><img src="media/image76.png" style="max-width:100%;" alt="Запрос для сортировки заказов по сумме" /><figcaption>Рисунок 34 – Запрос для сортировки заказов по сумме</figcaption></figure>
+<p>Или показать всех клиентов в алфавитном порядке по имени:</p>
+<figure><img src="media/image77.png" style="max-width:100%;" alt="Запрос для вывода клиентов в алфавитном порядке по имени" /><figcaption>Рисунок 35 – Запрос для вывода клиентов в алфавитном порядке по имени</figcaption></figure>
+
+<h2>Выводы</h2>
+<ol>
+<li>SQL — стандартный язык для взаимодействия с реляционными базами данных, позволяющий извлекать информацию без знания физического хранения.</li>
+<li>DB Browser for SQLite — оптимальный инструмент для учебных целей: бесплатный, наглядный, поддерживает все необходимые операции.</li>
+<li>Основные команды: CREATE TABLE (с типами INTEGER/TEXT и ограничениями NOT NULL, PRIMARY KEY, AUTOINCREMENT), INSERT INTO (добавление данных), SELECT (извлечение).</li>
+<li>SELECT освоен на трёх уровнях: просмотр всей таблицы (*), выбор нужных столбцов, фильтрация WHERE с операторами сравнения (=, <>, >, <, >=, <=) и логическими операторами (AND, OR).</li>
+<li>ORDER BY с ASC/DESC позволяет сортировать результаты. Этих операторов достаточно для 80% повседневных бизнес-запросов.</li>
+</ol>
+`,
+       lecture5: `
+<h1>Лекция 5. Аналитическая обработка данных в SQL: агрегация, группировка и фильтрация групп</h1>
+<h2>План</h2>
+<ol>
+<li>Агрегатные функции: COUNT, SUM, AVG, MIN, MAX</li>
+<li>Группировка данных с помощью GROUP BY</li>
+<li>Фильтрация групп оператором HAVING</li>
+<li>Порядок выполнения операторов в SQL-запросе</li>
+<li>Применение аналитических запросов для оценки эффективности процессов</li>
+</ol>
+<p>Владельцу сети кофеен бесполезен список из 5000 заказов за вчерашний день. Ему необходимы обобщённые показатели: общее количество заказов, сумма выручки, средний чек, распределение по статусам.</p>
+<p>Для получения таких сводных данных в SQL существуют агрегатные функции, которые обрабатывают множество строк и возвращают одно итоговое значение.</p>
+
+<h2>Агрегатные функции: COUNT, SUM, AVG, MIN, MAX</h2>
+<p>Агрегатные функции — это инструменты для получения сводной информации. Они выполняют вычисления над группой строк и возвращают единственный результат.</p>
+
+<p><strong>Таблица 10 – Основные агрегатные функции</strong></p>
+<table style="width:100%; border-collapse:collapse; margin:20px 0;">
+<thead>
+<tr style="background-color:#f0f2f5;">
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Функция</th>
+<th style="border:1px solid #ddd; padding:10px; text-align:left;">Назначение</th>
+</tr>
+</thead>
+<tbody>
+<tr><td style="border:1px solid #ddd; padding:10px;">COUNT(*)</td><td style="border:1px solid #ddd; padding:10px;">Подсчитывает количество строк в таблице</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">COUNT(столбец)</td><td style="border:1px solid #ddd; padding:10px;">Подсчитывает количество непустых значений в столбце</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">COUNT(DISTINCT столбец)</td><td style="border:1px solid #ddd; padding:10px;">Подсчитывает количество уникальных значений</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">SUM(столбец)</td><td style="border:1px solid #ddd; padding:10px;">Вычисляет сумму значений в столбце</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">AVG(столбец)</td><td style="border:1px solid #ddd; padding:10px;">Вычисляет среднее арифметическое</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">MAX(столбец)</td><td style="border:1px solid #ddd; padding:10px;">Находит максимальное значение</td></tr>
+<tr><td style="border:1px solid #ddd; padding:10px;">MIN(столбец)</td><td style="border:1px solid #ddd; padding:10px;">Находит минимальное значение</td></tr>
+</tbody>
+</table>
+
+<p><strong>Функция COUNT</strong></p>
+<p>Функция COUNT — самая простая и часто используемая. Она отвечает на вопрос «сколько?».</p>
+<p><em>Пример 1.</em> Сколько всего заказов в таблице?</p>
+<figure><img src="media/image78.png" style="max-width:100%;" alt="Поиск всего заказов в таблице" /><figcaption>Рисунок 47 – Поиск всего заказов в таблице</figcaption></figure>
+<p>Результат: одно число — общее количество строк в таблице. Звездочка * означает «считать все строки, независимо от содержимого».</p>
+<p><em>Пример 2.</em> Сколько клиентов указали свои имена?</p>
+<figure><img src="media/image79.png" style="max-width:100%;" alt="Поиск клиентов, которые указали свои имена" /><figcaption>Рисунок 48 – Поиск клиентов, которые указали свои имена</figcaption></figure>
+<p>Если в таблице есть строки, где поле name пустое (NULL), они не будут учтены. Функция COUNT(столбец) игнорирует NULL-значения.</p>
+<p><em>Пример 3.</em> Сколько уникальных городов представлено среди клиентов?</p>
+<figure><img src="media/image80.png" style="max-width:100%;" alt="Поиск количества уникальных городов" /><figcaption>Рисунок 49 – Поиск количества уникальных городов</figcaption></figure>
+<p>Ключевое слово DISTINCT убирает дубликаты. Если в таблице 100 клиентов, но все они из Москвы, результат будет 1.</p>
+
+<p><strong>Функция SUM</strong></p>
+<p>Функция SUM складывает все значения числового столбца.</p>
+<p><em>Пример 4.</em> Какова общая выручка за всё время?</p>
+<figure><img src="media/image81.png" style="max-width:100%;" alt="Общая выручка за всё время" /><figcaption>Рисунок 50 – Общая выручка за всё время</figcaption></figure>
+<p><em>Пример 5.</em> Какова выручка только по новым заказам?</p>
+<figure><img src="media/image82.png" style="max-width:100%;" alt="Выручка по новым заказам" /><figcaption>Рисунок 51 – Выручка по новым заказам</figcaption></figure>
+<p>Условие WHERE применяется до того, как сумма будет подсчитана. Сначала отбираются строки со статусом «Новый», затем вычисляется их сумма.</p>
+
+<p><strong>Функция AVG</strong></p>
+<p>Функция AVG возвращает среднее арифметическое значений столбца. Важно помнить: она делит сумму на количество непустых значений. NULL-значения игнорируются.</p>
+<p><em>Пример 6.</em> Каков средний чек по всем заказам?</p>
+<figure><img src="media/image83.png" style="max-width:100%;" alt="Поиск среднего чека по всем заказам" /><figcaption>Рисунок 52 – Поиск среднего чека по всем заказам</figcaption></figure>
+<p><em>Пример 7.</em> Каков средний чек по заказам, которые уже доставлены?</p>
+<figure><img src="media/image84.png" style="max-width:100%;" alt="Поиск среднего чека по заказам, которые уже доставлены" /><figcaption>Рисунок 53 – Поиск среднего чека по заказам, которые уже доставлены</figcaption></figure>
+
+<p><strong>Функции MIN и MAX</strong></p>
+<p>Эти функции находят максимальное и минимальное значение в столбце.</p>
+<p><em>Пример 8.</em> Какой самый дорогой и самый дешёвый заказ?</p>
+<figure><img src="media/image85.png" style="max-width:100%;" alt="Поиск дорогого и дешёвого заказа" /><figcaption>Рисунок 54 – Поиск дорогого и дешёвого заказа</figcaption></figure>
+<p><em>Пример 9.</em> Какой самый дорогой заказ среди новых?</p>
+<figure><img src="media/image86.png" style="max-width:100%;" alt="Поиск дорогого заказа среди новых" /><figcaption>Рисунок 55 – Поиск дорогого заказа среди новых</figcaption></figure>
+
+<p>Создадим учебную базу данных для интернет-магазина и применим изученные функции.</p>
+<figure><img src="media/image87.png" style="max-width:100%;" alt="Учебная база данных для интернет-магазина" /><figcaption>Рисунок 56 – Учебная база данных для интернет-магазина</figcaption></figure>
+
+<p><em>Пример 1.</em> Сколько всего заказов сделано?</p>
+<figure><img src="media/image88.png" style="max-width:100%;" alt="Общее количество заказов" /><figcaption>Рисунок 57 – Общее количество заказов</figcaption></figure>
+<p><em>Пример 2.</em> Сколько уникальных клиентов сделали заказы?</p>
+<figure><img src="media/image89.png" style="max-width:100%;" alt="Количество уникальных клиентов, которые сделали заказы" /><figcaption>Рисунок 58 – Количество уникальных клиентов, которые сделали заказы</figcaption></figure>
+<p><em>Пример 3.</em> Какова общая выручка магазина?</p>
+<figure><img src="media/image90.png" style="max-width:100%;" alt="Общая выручка" /><figcaption>Рисунок 59 – Общая выручка</figcaption></figure>
+<p><em>Пример 4.</em> Каков средний чек?</p>
+<figure><img src="media/image91.png" style="max-width:100%;" alt="Средний чек" /><figcaption>Рисунок 60 – Средний чек</figcaption></figure>
+<p><em>Пример 5.</em> Какова выручка только по доставленным заказам?</p>
+<figure><img src="media/image92.png" style="max-width:100%;" alt="Выручка по доставленным заказам" /><figcaption>Рисунок 61 – Выручка по доставленным заказам</figcaption></figure>
+
+<h2>Группировка данных с помощью GROUP BY</h2>
+<p>Агрегатные функции дают общую картину по всей таблице. Но если вам нужно провести анализ по каждому статусу заказа или по каждому клиенту отдельно, то в таком случае нужно применять оператор GROUP BY.</p>
+<p>GROUP BY группирует строки, имеющие одинаковые значения в указанных столбцах, после чего агрегатные функции применяются к каждой группе независимо.</p>
+<figure><img src="media/image93.png" style="max-width:100%;" alt="Как работает GROUP BY" /><figcaption>Рисунок 62 – Как работает GROUP BY</figcaption></figure>
+
+<p>Синтаксис <strong>GROUP BY:</strong></p>
+<pre><code>SELECT столбец_для_группировки, агрегатная_функция(столбец)
+FROM таблица
+WHERE условие
+GROUP BY столбец_для_группировки;</code></pre>
+
+<p><strong>Важное правило:</strong> в SELECT после GROUP BY можно указывать только:</p>
+<ul>
+<li>столбцы, перечисленные в GROUP BY;</li>
+<li>агрегатные функции.</li>
+</ul>
+
+<p><em>Пример 1.</em> Сколько заказов в каждом статусе?</p>
+<figure><img src="media/image94.png" style="max-width:100%;" alt="Количество заказов в каждом статусе" /><figcaption>Рисунок 63 – Количество заказов в каждом статусе</figcaption></figure>
+<p><em>Пример 2.</em> Какова сумма заказов по каждому статусу?</p>
+<figure><img src="media/image95.png" style="max-width:100%;" alt="Сумма заказов по каждому статусу" /><figcaption>Рисунок 64 – Сумма заказов по каждому статусу</figcaption></figure>
+<p><em>Пример 3.</em> Какова сумма заказов по каждому клиенту?</p>
+<figure><img src="media/image96.png" style="max-width:100%;" alt="Сумма заказов по каждому клиенту" /><figcaption>Рисунок 65 – Сумма заказов по каждому клиенту</figcaption></figure>
+<p>Здесь можно проанализировать, кто из клиентов приносит наибольшую выручку или является постоянным клиентом.</p>
+
+<p><strong>Группировка по нескольким столбцам</strong></p>
+<p>Можно группировать данные по комбинации полей. Например, нужно увидеть сумму заказов по каждому клиенту и по каждому статусу.</p>
+<p><em>Пример 1.</em> Сумма заказов по клиенту и статусу</p>
+<figure><img src="media/image97.png" style="max-width:100%;" alt="Сумма заказов по клиенту и статусу" /><figcaption>Рисунок 66 – Сумма заказов по клиенту и статусу</figcaption></figure>
+<p>Порядок столбцов в GROUP BY важен: сначала строки группируются по первому столбцу, затем внутри каждой группы — по второму.</p>
+
+<h2>Фильтрация групп оператором HAVING</h2>
+<p>Оператор WHERE фильтрует отдельные строки до группировки. А что, если нужно отфильтровать уже сформированные группы? Например, оставить только тех клиентов, чья общая сумма заказов превышает 20000 рублей?</p>
+<p>Для этого используется оператор HAVING. Он применяется после группировки и фильтрует группы по результатам агрегатных функций.</p>
+
+<p><strong>Синтаксис:</strong></p>
+<pre><code>SELECT столбец, агрегатная_функция(столбец)
+FROM таблица
+WHERE условие_для_строк
+GROUP BY столбец
+HAVING условие_для_групп;</code></pre>
+
+<p><em>Пример 1.</em> Клиенты с общей суммой заказов более 20000 рублей</p>
+<figure><img src="media/image98.png" style="max-width:100%;" alt="Клиенты с общей суммой заказов более 20000 рублей" /><figcaption>Рисунок 67 – Клиенты с общей суммой заказов более 20000 рублей</figcaption></figure>
+<p><em>Пример 2.</em> Статусы, в которых сумма заказов превышает 10000 рублей</p>
+<figure><img src="media/image99.png" style="max-width:100%;" alt="Статусы, в которых сумма заказов превышает 10000 рублей" /><figcaption>Рисунок 68 – Статусы, в которых сумма заказов превышает 10000 рублей</figcaption></figure>
+
+<h2>Порядок выполнения операторов в SQL-запросе</h2>
+<p>Чтобы правильно понимать, как работают запросы с агрегацией, важно знать порядок их логического выполнения:</p>
+<ol>
+<li><strong>FROM</strong> — определяет, из какой таблицы берутся данные</li>
+<li><strong>WHERE</strong> — фильтрация отдельных строк</li>
+<li><strong>GROUP BY</strong> — группировка строк</li>
+<li><strong>HAVING</strong> — фильтрация групп</li>
+<li><strong>SELECT</strong> — выбор столбцов и вычисление агрегатов</li>
+<li><strong>ORDER BY</strong> — сортировка результатов</li>
+</ol>
+<figure><img src="media/image100.png" style="max-width:100%;" alt="Порядок выполнения запроса" /><figcaption>Рисунок 69 – Порядок выполнения запроса</figcaption></figure>
+<p>Это объясняет, почему нельзя использовать агрегатную функцию в WHERE — на этапе WHERE группы еще не сформированы и агрегаты не вычислены.</p>
+
+<h2>Применение аналитических запросов для оценки эффективности процессов</h2>
+<p>На примере BPMN-схемы процесса «Обработка заказа» со статусами «Новый», «В обработке», «Доставлен», «Закрыт» можно написать SQL-запрос, показывающий количество заказов в каждом статусе. Накопление заказов в статусе «Новый» при малом количестве в «В обработке» является признаком узкого места — менеджеры не успевают обрабатывать входящие заказы. Это сигнал к оптимизации бизнес-процесса.</p>
+<figure><img src="media/image101.png" style="max-width:100%;" alt="Количество заказов, которые находятся в каждом статусе" /><figcaption>Рисунок 70 – Количество заказов, которые находятся в каждом статусе</figcaption></figure>
+
+<h2>Выводы</h2>
+<ol>
+<li>Агрегатные функции (COUNT, SUM, AVG, MIN, MAX) позволяют получить обобщённые показатели: общее количество, выручку, средний чек, экстремальные значения.</li>
+<li>GROUP BY группирует строки по одному или нескольким столбцам, применяя агрегаты к каждой группе. В SELECT после GROUP BY допустимы только столбцы группировки и агрегаты.</li>
+<li>HAVING фильтрует группы по результатам агрегатных функций (в отличие от WHERE, фильтрующего строки до группировки).</li>
+<li>Порядок выполнения операторов: FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY.</li>
+<li>Накопление заказов в одном статусе — признак узкого места бизнес-процесса, требующего оптимизации.</li>
+</ol>
+`,
+        lecture6: `
+<h1>Лекция 6. Интеграция процессного моделирования и аналитики данных для непрерывного улучшения бизнеса</h1>
+<h2>План</h2>
+<ol>
+<li>Сопоставление нормативной модели процесса с фактическими данными</li>
+<li>Сквозной пример: диагностика проблем интернет-магазина</li>
+<li>BPMN-схема для сравнения</li>
+<li>Диагностические SQL-запросы для выявления узких мест</li>
+<li>Цикл непрерывного улучшения на основе данных</li>
+</ol>
+
+<h2>Сопоставление нормативной модели процесса с фактическими данными</h2>
+<p>Ранее были изучены методы описания бизнес-процессов с помощью BPMN — визуального языка, позволяющего увидеть последовательность действий, зоны ответственности и точки принятия решений. Также были рассмотрены источники данных, их хранение в базах данных и извлечение с помощью SQL.</p>
+<p>Ключевая идея интеграции: BPMN показывает, как должен работать бизнес. SQL показывает, как он работает на самом деле. Сравнение схемы с реальными цифрами позволяет выявить точки роста и узкие места процесса.</p>
+
+<h2>Сквозной пример: диагностика проблем интернет-магазина</h2>
+<p>Интернет-магазин по продаже электроники столкнулся с падением количества завершённых заказов и ростом неоплаченных заказов за последние три недели. В распоряжении владельца имеются:</p>
+<ol>
+<li>BPMN-схема процесса обработки заказа — нормативная модель.</li>
+<li>База данных с таблицами «Клиенты», «Товары», «Заказы» — фактические данные.</li>
+</ol>
+
+<h2>BPMN-схема для сравнения</h2>
+<p>Схема ниже показывает, как устроен процесс обработки заказа в интернет-магазине по продаже электроники. Это упрощённая диаграмма, но она отражает ключевые этапы и точки принятия решений.</p>
+<figure><img src="media/image102.png" style="max-width:100%;" alt="BPMN-диаграмма процесса Обработка заказа" /><figcaption>Рисунок 90 – BPMN-диаграмма процесса «Обработка заказа»</figcaption></figure>
+<p>На этой схеме хорошо видны «точки выбора», где процесс может пойти по разным путям в зависимости от условий:</p>
+<ul>
+<li>Товар в наличии? — если нет, клиент уведомляется, заказ не создается.</li>
+<li>Оплата получена? — если клиент не оплатил заказ в течение 24 часов, заказ отменяется.</li>
+</ul>
+<p>Именно в этих точках чаще всего возникают проблемы. Зависшие заказы, долгие ожидания, необработанные отмены — всё это отражается на данных.</p>
+
+<h2>Диагностические SQL-запросы для выявления узких мест</h2>
+<p>Пока клиенты оформляют заказы, а сотрудники их обрабатывают, база данных магазина накапливает информацию. У нас есть три основные таблицы.</p>
+<figure><img src="media/image103.png" style="max-width:100%;" alt="Покупатели" /><figcaption>Рисунок 91 – Покупатели</figcaption></figure>
+<figure><img src="media/image104.png" style="max-width:100%;" alt="Товары" /><figcaption>Рисунок 92 – Товары</figcaption></figure>
+<figure><img src="media/image105.png" style="max-width:100%;" alt="Заказы" /><figcaption>Рисунок 93 – Заказы</figcaption></figure>
+
+<p>Обратите внимание на столбец status. Он может принимать следующие значения:</p>
+<ul>
+<li><strong>Новый</strong> — заказ создан, но еще не передан в обработку</li>
+<li><strong>Ожидает оплаты</strong> — заказ подтвержден, магазин ждет оплаты от клиента</li>
+<li><strong>В обработке</strong> — оплата получена, заказ готовится к отправке</li>
+<li><strong>Доставлен</strong> — заказ передан клиенту</li>
+<li><strong>Отменен</strong> — заказ отменен (по инициативе клиента или из-за отсутствия оплаты)</li>
+</ul>
+
+<p>Владелец интернет-магазина смотрит на отчет за последнюю неделю и видит: из 12 заказов, созданных с 10 по 14 марта, только 3 имеют статус «Доставлен». Остальные зависли на разных этапах.</p>
+<p>Владельцу магазина нужно понять, где находится узкое место процесса, может ли быть такое, что клиенты не оплачивают заказы? Или заказы не успевают обрабатывать? Может быть проблема с доставкой?</p>
+
+<p>Если клиент не оплачивает заказ в течение 24 часов, процесс по BPMN-схеме должен отменить заказ. Но что, если система не справляется с автоматической отменой? Для этого нужно проверить, сколько заказов «зависло» в статусе «Ожидает оплаты» дольше суток.</p>
+<figure><img src="media/image106.png" style="max-width:100%;" alt="Заказы в статусе Ожидает оплаты дольше суток" /><figcaption>Рисунок 94 – Заказы в статусе «Ожидает оплаты» дольше суток</figcaption></figure>
+<p>Девять заказов находятся в статусе «Ожидает оплаты» уже больше суток. По бизнес-процессу они должны были быть либо оплачены, либо отменены. Это явное узкое место процесса.</p>
+
+<p>По BPMN-схеме после создания заказа менеджер должен подтвердить его и перевести в статус «Ожидает оплаты». Для этого нужно проверить, сколько заказов всё ещё находятся в статусе «Новый» более двух суток.</p>
+<figure><img src="media/image107.png" style="max-width:100%;" alt="Заказы в статусе Новый более двух суток" /><figcaption>Рисунок 95 – Заказы в статусе «Новый» более двух суток</figcaption></figure>
+<p>Заказ №1004 «висит» в статусе «Новый» уже 9 дней (с момента текущей даты) — явный сбой. Остальные четыре заказа также не были обработаны менеджером в нормативные сроки.</p>
+
+<p>Владелец магазина замечает, что отменён только один заказ, и он на небольшую сумму. Но, возможно, есть корреляция между суммой заказа и вероятностью отмены? Для этого нужно построить запрос, который показывает среднюю сумму отмененных заказов и среднего чека.</p>
+<figure><img src="media/image108.png" style="max-width:100%;" alt="Средняя сумма отменённых заказов и среднего чека" /><figcaption>Рисунок 96 – Средняя сумма отменённых заказов и среднего чека</figcaption></figure>
+<p>Пока что отменён только один заказ. Но тенденция может быть опасной: если клиенты начнут отменять дорогие заказы, выручка упадет значительно. Поэтому нужно внимательнее следить за этим показателем.</p>
+
+<p>Возможно, проблема не в процессе, а в ассортименте? Для этого нужно посмотреть, какие товары чаще всего находятся в неоплаченных заказах.</p>
+<figure><img src="media/image109.png" style="max-width:100%;" alt="Неоплаченные товары" /><figcaption>Рисунок 97 – Неоплаченные товары</figcaption></figure>
+<p>В таблице Orders нет прямой связи с Products, но в реальной базе данных такая связь через product_id обязательна!</p>
+
+<p>После анализа данных владелец интернет-магазина принимает управленческие решения:</p>
+<ol>
+<li>Настроить автоматическую отмену заказов, не оплаченных в течение 24 часов. Это требование уже заложено в BPMN-схему, но не было реализовано в информационной системе.</li>
+<li>Перераспределить нагрузку на менеджеров в час пик. Заказы, поступающие вечером и в выходные, должны обрабатываться в первую очередь в начале рабочего дня.</li>
+<li>Добавить автоматическое уведомление клиентам, если их заказ находится в статусе «Новый» более 12 часов.</li>
+<li>Настроить дашборд для руководства, который в реальном времени показывает количество заказов в каждом статусе и время нахождения в нём.</li>
+</ol>
+
+<h2>Цикл непрерывного улучшения на основе данных</h2>
+<figure><img src="media/image110.png" style="max-width:100%;" alt="Цикл улучшения бизнес-процессов с помощью BPMN и SQL" /><figcaption>Рисунок 98 – Цикл улучшения бизнес-процессов с помощью BPMN и SQL</figcaption></figure>
+<p>Этот цикл называется <strong>непрерывным улучшением процессов</strong>. BPMN без данных — это красивая картинка. Данные без BPMN — это просто цифры. Вместе они дают возможность управлять бизнесом осознанно и эффективно.</p>
+
+<h2>Вывод</h2>
+<ol>
+<li>Интеграция BPMN и SQL создаёт двухуровневую модель управления: BPMN показывает нормативную схему процесса, SQL — фактические данные о его исполнении.</li>
+<li>Сравнение нормативного и фактического уровней позволяет выявлять узкие места (зависшие заказы, нарушение нормативов) и проверять гипотезы об эффективности.</li>
+<li>Воронка процесса (конверсия между статусами) рассчитывается с помощью CTE (Common Table Expression). В примере магазина: 47% заказов доходят до оплаты, 15% — до доставки.</li>
+<li>Цикл непрерывного улучшения: BPMN-модель → сбор фактов → SQL-запросы → управленческие решения → изменения процесса → повтор.</li>
+<li>Без интеграции моделирования и данных любые улучшения носят интуитивный, а не доказательный характер.</li>
+</ol>
+`,
+
+        // Практические работы без сокращений
+        practice1: `
+<h1>Практическая работа №1</h1>
+<p><strong>Цель работы:</strong> научиться визуализировать простой бизнес-процесс с использованием базовых элементов нотации BPMN (овал — начало/конец, прямоугольник — действие, ромб — решение).</p>
+<ol>
+<li>Откройте веб-сайт diagrams.net (или приложение, если установлено).</li>
+<li>Нажмите кнопку «Создать новую диаграмму» (Create New Diagram).</li>
+<li>В поле «Имя файла» введите Процесс_сдачи_бутылок.</li>
+</ol>
+<figure><img src="media/image111.png" style="max-width:100%;" alt="Имя диаграммы" /><figcaption>Рисунок 107 – Имя диаграммы</figcaption></figure>
+<ol start="4">
+<li>В списке шаблонов выберите «Блок-схема» (Flowchart) и нажмите «Создать».</li>
+</ol>
+<figure><img src="media/image112.png" style="max-width:100%;" alt="Выбор типа диаграммы" /><figcaption>Рисунок 108 – Выбор типа диаграммы</figcaption></figure>
+<ol start="5">
+<li>Перетащите фигуру «Овал» (начало) на поле редактирования. Дважды кликните по фигуре и введите текст: Начало: Человек заходит в пункт приёма.</li>
+</ol>
+<figure><img src="media/image113.png" style="max-width:100%;" alt="Начало диаграммы" /><figcaption>Рисунок 109 – Начало диаграммы</figcaption></figure>
+<ol start="6">
+<li>Добавьте стрелку (соединитель) от овала вниз.</li>
+</ol>
+<figure><img src="media/image114.png" style="max-width:100%;" alt="Стрелка соединитель" /><figcaption>Рисунок 110 – Стрелка соединитель</figcaption></figure>
+<ol start="7">
+<li>Перетащите фигуру «Прямоугольник» (действие). Подсоедините её к стрелке. Введите текст: Взвесить пластиковые бутылки.</li>
+</ol>
+<figure><img src="media/image115.png" style="max-width:100%;" alt="Добавление действия" /><figcaption>Рисунок 111 – Добавление действия</figcaption></figure>
+<ol start="8">
+<li>Добавьте стрелку от прямоугольника вниз.</li>
+<li>Перетащите фигуру «Ромб» (условие/вопрос). Введите текст: Человек хочет деньги или жетон?</li>
+</ol>
+<figure><img src="media/image116.png" style="max-width:100%;" alt="Добавление условия" /><figcaption>Рисунок 112 – Добавление условия</figcaption></figure>
+<ol start="10">
+<li>От ромба проведите две стрелки: влево (подпишите «Деньги») и вправо (подпишите «Жетон»).</li>
+</ol>
+<figure><img src="media/image117.png" style="max-width:100%;" alt="Выполнение условия" /><figcaption>Рисунок 113 – Выполнение условия</figcaption></figure>
+<ol start="11">
+<li>На левой ветке добавьте прямоугольник с текстом: Выдать деньги.</li>
+<li>На правой ветке добавьте прямоугольник с текстом: Выдать жетон.</li>
+</ol>
+<figure><img src="media/image118.png" style="max-width:100%;" alt="Ветки условия" /><figcaption>Рисунок 114 – Ветки условия</figcaption></figure>
+<ol start="13">
+<li>От каждого прямоугольника проведите стрелку к овалу с текстом Конец.</li>
+</ol>
+<figure><img src="media/image119.png" style="max-width:100%;" alt="Конец условия" /><figcaption>Рисунок 115 – Конец условия</figcaption></figure>
+<ol start="14">
+<li>В лекции 1 утверждается, что ромб — это развилка. Здесь мы изобразили эксклюзивный выбор (XOR).</li>
+<li>Выделите весь процесс рамкой (инструмент «Рамка») и подпишите: Зона ответственности — Оператор пункта приёма.</li>
+</ol>
+<figure><img src="media/image120.png" style="max-width:100%;" alt="Процесс в рамке" /><figcaption>Рисунок 116 – Процесс в рамке</figcaption></figure>
+<ol start="16">
+<li>Убедитесь, что у каждого действия ровно один входящий и один исходящий поток (кроме ромба).</li>
+<li>Сравните полученную схему с образцом из Лекции 1. При наличии расхождений исправьте их.</li>
+<li>Сохраните диаграмму: Файл → Сохранить.</li>
+<li>Экспортируйте схему в PNG: Файл → Экспортировать как → PNG.</li>
+</ol>
+<figure><img src="media/image121.png" style="max-width:100%;" alt="Экспорт процесса" /><figcaption>Рисунок 117 – Экспорт процесса</figcaption></figure>
+<ol start="20">
+<li><strong>Результат:</strong> файл Процесс_сдачи_бутылок.drawio и его PNG-экспорт.</li>
+</ol>
+`,
+
+practice2: `
+<h1>Практическая работа №2</h1>
+<p><strong>Цель работы:</strong> научиться открывать существующую базу данных в DB Browser for SQLite, просматривать структуру таблиц, знакомиться с типами данных и выполнять простейшие запросы на чтение (SELECT).</p>
+<ol>
+<li>Запустите DB Browser for SQLite.</li>
+<li>В главном меню выберите Файл → Открыть базу данных (File → Open Database).</li>
+<li>В открывшемся диалоговом окне найдите папку, где сохранена база business.db, выберите её и нажмите «Открыть».</li>
+<li>Убедитесь, что в левой части окна (вкладка «Структура базы данных») отображаются две таблицы: «Клиенты» и «Заказы».</li>
+</ol>
+<figure><img src="media/image122.png" style="max-width:100%;" alt="Структура базы данных" /><figcaption>Рисунок 118 – Структура базы данных</figcaption></figure>
+<ol start="5">
+<li>Кликните один раз по таблице «Клиенты». В правой части вкладки «Структура базы данных» появятся поля (столбцы) этой таблицы:</li>
+</ol>
+<figure><img src="media/image123.png" style="max-width:100%;" alt="Структура таблицы Клиенты" /><figcaption>Рисунок 119 – Структура таблицы «Клиенты»</figcaption></figure>
+<ol start="6">
+<li>INTEGER — целые числа, TEXT — строки. PRIMARY KEY у поля id означает, что каждая запись имеет уникальный номер.</li>
+<li>Кликните один раз по таблице «Заказы». Изучите её поля:</li>
+</ol>
+<figure><img src="media/image124.png" style="max-width:100%;" alt="Структура таблицы Заказы" /><figcaption>Рисунок 120 – Структура таблицы «Заказы»</figcaption></figure>
+<ol start="8">
+<li>Перейдите на вкладку «Просмотр данных» (Browse Data). В выпадающем списке слева выберите таблицу «Клиенты».</li>
+</ol>
+<figure><img src="media/image125.png" style="max-width:100%;" alt="Просмотр данных таблицы Клиенты" /><figcaption>Рисунок 121 – Просмотр данных таблицы «Клиенты»</figcaption></figure>
+<ol start="9">
+<li>Запишите, сколько строк (записей) содержится в таблице «Клиенты». Обратите внимание, что у каждой записи есть свой id.</li>
+<li>В выпадающем списке выберите таблицу «Заказы». Просмотрите данные. Обратите внимание, что поле client_name повторяется (один клиент может сделать несколько заказов).</li>
+<li>Найдите в таблице «Заказы» самый дорогой товар (наибольшее значение в столбце amount). Запишите его название и цену.</li>
+<li>Перейдите на вкладку «Выполнить SQL» (Execute SQL). Это место, где будут писаться запросы.</li>
+<li>Выполните простой запрос для просмотра всех данных из таблицы «Клиенты»:</li>
+</ol>
+<figure><img src="media/image126.png" style="max-width:100%;" alt="Просмотр данных" /><figcaption>Рисунок 122 – Просмотр данных</figcaption></figure>
+<ol start="14">
+<li>Выполните запрос для просмотра только имён и телефонов клиентов:</li>
+</ol>
+<figure><img src="media/image127.png" style="max-width:100%;" alt="Просмотр имён и телефонов клиентов" /><figcaption>Рисунок 123 – Просмотр имён и телефонов клиентов</figcaption></figure>
+<ol start="15">
+<li>Звёздочка * означает «все столбцы». Если нужны не все, их перечисляют через запятую.</li>
+<li>Выполните запрос с условием WHERE — показать только клиентов из Москвы:</li>
+</ol>
+<figure><img src="media/image128.png" style="max-width:100%;" alt="Клиенты из Москвы" /><figcaption>Рисунок 124 – Клиенты из Москвы</figcaption></figure>
+<ol start="17">
+<li>Выполните запрос с сортировкой ORDER BY — показать заказы от самых дорогих к самым дешёвым:</li>
+</ol>
+<figure><img src="media/image129.png" style="max-width:100%;" alt="Запрос с сортировкой" /><figcaption>Рисунок 125 – Запрос с сортировкой</figcaption></figure>
+<ol start="18">
+<li>DESC — убывание (от большего к меньшему), ASC — возрастание (по умолчанию).</li>
+<li>Выполните комбинированный запрос — показать новые заказы (статус «Новый») на сумму больше 5000 рублей:</li>
+</ol>
+<figure><img src="media/image130.png" style="max-width:100%;" alt="Заказы на сумму более 5000 рублей" /><figcaption>Рисунок 126 – Заказы на сумму более 5000 рублей</figcaption></figure>
+<ol start="20">
+<li><strong>Результат:</strong> выполнены 6 различных SELECT-запросов (простые, с фильтрацией, с сортировкой, с логическими операторами).</li>
+</ol>
+`,
+
+practice3: `
+<h1>Практическая работа №3</h1>
+<p><strong>Цель работы:</strong> освоить команды модификации схемы базы данных (ALTER TABLE — добавление, переименование, удаление столбцов) и команды манипулирования данными (UPDATE — изменение существующих записей, DELETE — удаление записей). Сформировать понимание различий между DDL (Data Definition Language) и DML (Data Manipulation Language) на примере SQLite. Научиться безопасно выполнять операции изменения данных с использованием условий WHERE для избежания массовых ошибочных изменений.</p>
+<ol>
+<li>Запустите DB Browser for SQLite.</li>
+<li>Откройте базу данных business.db (Файл → Открыть базу данных).</li>
+<li>Перейдите на вкладку «Структура базы данных» и убедитесь, что таблицы «Клиенты» и «Заказы» присутствуют.</li>
+<li>Перейдите на вкладку «Выполнить SQL».</li>
+<li>В лекциях 4 и 5 рассматривались только операции чтения данных (SELECT). В реальной работе с базами данных часто требуется изменять структуру таблиц и сами данные. Для этого используются команды: ALTER TABLE — изменение структуры таблицы (добавление/удаление столбцов); UPDATE — изменение значений в существующих записях; DELETE — удаление записей.</li>
+<li>Добавьте новый столбец</li>
+</ol>
+<figure><img src="media/image131.png" style="max-width:100%;" alt="Добавление нового столбца" /><figcaption>Рисунок 127 – Добавление нового столбца</figcaption></figure>
+<ol start="7">
+<li>Перейдите на вкладку «Структура базы данных», кликните по таблице «Клиенты» и убедитесь, что появился новый столбец email с типом TEXT.</li>
+</ol>
+<figure><img src="media/image132.png" style="max-width:100%;" alt="Структура таблицы Клиенты" /><figcaption>Рисунок 128 – Структура таблицы «Клиенты»</figcaption></figure>
+<ol start="8">
+<li>Заполните новый столбец данными</li>
+</ol>
+<figure><img src="media/image133.png" style="max-width:100%;" alt="Заполнение столбца данными" /><figcaption>Рисунок 129 – Заполнение столбца данными</figcaption></figure>
+<ol start="9">
+<li>UPDATE без WHERE изменит значения во всех строках таблицы. Всегда проверяйте условие WHERE перед выполнением.</li>
+<li>Добавьте email для второго клиента:</li>
+</ol>
+<figure><img src="media/image134.png" style="max-width:100%;" alt="Заполнение столбца данными" /><figcaption>Рисунок 130 – Заполнение столбца данными</figcaption></figure>
+<ol start="11">
+<li>Выполните запрос, чтобы убедиться, что email добавились только у нужных клиентов.</li>
+</ol>
+<figure><img src="media/image135.png" style="max-width:100%;" alt="Просмотр данных таблицы" /><figcaption>Рисунок 131 – Просмотр данных таблицы</figcaption></figure>
+<ol start="12">
+<li>Измените статус заказа с «Новый» на «В обработке»:</li>
+</ol>
+<figure><img src="media/image136.png" style="max-width:100%;" alt="Изменение статуса заказа" /><figcaption>Рисунок 132 – Изменение статуса заказа</figcaption></figure>
+<ol start="13">
+<li>Выполните SELECT * FROM Заказы; и проверьте, что статус конкретного заказа изменился.</li>
+<li>Удалите заказ с самой маленькой суммой (предварительно найдите его):</li>
+</ol>
+<figure><img src="media/image137.png" style="max-width:100%;" alt="Удаление заказа" /><figcaption>Рисунок 133 – Удаление заказа</figcaption></figure>
+<p>Подзапрос (SELECT MIN(amount) FROM Заказы) находит минимальную сумму. DELETE удаляет запись(и), удовлетворяющие условию.</p>
+<ol start="15">
+<li>Выполните SELECT * FROM Заказы; и убедитесь, что самый дешёвый заказ удалён.</li>
+<li>В SQLite удаление столбца напрямую не поддерживается. Вместо этого нужно: переименовать таблицу; создать новую таблицу без удаляемого столбца; скопировать данные; удалить старую таблицу.</li>
+<li>Выполните переименование столбца:</li>
+</ol>
+<figure><img src="media/image138.png" style="max-width:100%;" alt="Переименование столбца" /><figcaption>Рисунок 134 – Переименование столбца</figcaption></figure>
+<ol start="18">
+<li>Перейдите на вкладку «Структура базы данных» и убедитесь, что столбец phone переименован в phone_number.</li>
+</ol>
+<figure><img src="media/image139.png" style="max-width:100%;" alt="Структура таблицы" /><figcaption>Рисунок 135 – Структура таблицы</figcaption></figure>
+<ol start="19">
+<li>Напишите и выполните запрос, который меняет город клиента «Сидоров Петр» (если такого нет, добавьте его через INSERT) на «Самара». Используйте UPDATE.</li>
+</ol>
+<figure><img src="media/image140.png" style="max-width:100%;" alt="Изменение города клиента" /><figcaption>Рисунок 136 – Изменение города клиента</figcaption></figure>
+<ol start="20">
+<li><strong>Результат:</strong> база business.db открыта, структура изучена. Выполнены 6 различных SELECT-запросов (простые, с фильтрацией, с сортировкой, с логическими операторами).</li>
+</ol>
+`,
+
+practice4: `
+<h1>Практическая работа №4</h1>
+<p><strong>Цель работы:</strong> научиться применять агрегатные функции для получения обобщённых статистических показателей по выборке данных с учётом изменений, внесённых в базу (новые столбцы, изменённые данные, удалённые записи).</p>
+<ol>
+<li>Откройте DB Browser for SQLite и загрузите business.db.</li>
+<li>Перейдите на вкладку «Выполнить SQL».</li>
+<li>После удаления самого дешёвого заказа в работе №3 общее количество заказов уменьшилось. Выполните запрос, чтобы узнать новое количество:</li>
+</ol>
+<figure><img src="media/image141.png" style="max-width:100%;" alt="Количество заказов" /><figcaption>Рисунок 137 – Количество заказов</figcaption></figure>
+<ol start="4">
+<li>Выполните запрос для подсчёта клиентов, у которых указан email (не NULL):</li>
+</ol>
+<figure><img src="media/image142.png" style="max-width:100%;" alt="Запрос для подсчёта клиентов" /><figcaption>Рисунок 138 – Запрос для подсчёта клиентов</figcaption></figure>
+<ol start="5">
+<li>COUNT(email) считает только непустые значения. Сравните результат с COUNT(*) из таблицы «Клиенты».</li>
+<li>Выполните запрос для подсчёта уникальных городов среди клиентов:</li>
+</ol>
+<figure><img src="media/image143.png" style="max-width:100%;" alt="Подсчёт уникальных городов" /><figcaption>Рисунок 139 – Подсчёт уникальных городов</figcaption></figure>
+<ol start="7">
+<li>Выполните запрос для расчёта общей выручки (сумма всех amount):</li>
+</ol>
+<figure><img src="media/image144.png" style="max-width:100%;" alt="Расчёт общей выручки" /><figcaption>Рисунок 140 – Расчёт общей выручки</figcaption></figure>
+<ol start="8">
+<li>Выполните запрос для расчёта выручки только по доставленным заказам:</li>
+</ol>
+<figure><img src="media/image145.png" style="max-width:100%;" alt="Выручка по доставленным заказам" /><figcaption>Рисунок 141 – Выручка по доставленным заказам</figcaption></figure>
+<ol start="9">
+<li>AVG(amount) вычисляет среднее арифметическое, игнорируя NULL. Выполните:</li>
+</ol>
+<figure><img src="media/image146.png" style="max-width:100%;" alt="Среднее арифметическое" /><figcaption>Рисунок 142 – Среднее арифметическое</figcaption></figure>
+<ol start="10">
+<li>Сравните полученное среднее с тем, что было до удаления самого дешёвого заказа. Средний чек должен увеличиться.</li>
+<li>Выполните запрос для нахождения максимальной и минимальной суммы заказа:</li>
+</ol>
+<figure><img src="media/image147.png" style="max-width:100%;" alt="Запрос для нахождения максимальной и минимальной суммы заказа" /><figcaption>Рисунок 143 – Запрос для нахождения максимальной и минимальной суммы заказа</figcaption></figure>
+<ol start="12">
+<li>Минимальная сумма теперь должна быть больше, чем была, так как самый дешёвый заказ удалён.</li>
+<li>Агрегатные функции можно комбинировать в одном запросе. Выполните:</li>
+</ol>
+<figure><img src="media/image148.png" style="max-width:100%;" alt="Комбинирование агрегатных функций" /><figcaption>Рисунок 144 – Комбинирование агрегатных функций</figcaption></figure>
+<ol start="14">
+<li>Используйте WHERE перед агрегацией. Найдите среднюю сумму заказов со статусом «В обработке»:</li>
+</ol>
+<figure><img src="media/image149.png" style="max-width:100%;" alt="Средняя сумма заказов со статусом В обработке" /><figcaption>Рисунок 145 – Средняя сумма заказов со статусом «В обработке»</figcaption></figure>
+<ol start="15">
+<li>Выполните два запроса и сравните результаты: Средний чек по клиентам из Москвы</li>
+</ol>
+<figure><img src="media/image150.png" style="max-width:100%;" alt="Средний чек по клиентам из Москвы" /><figcaption>Рисунок 146 – Средний чек по клиентам из Москвы</figcaption></figure>
+<p>Средний чек по клиентам из Самары</p>
+<figure><img src="media/image151.png" style="max-width:100%;" alt="Средний чек по клиентам из Самары" /><figcaption>Рисунок 147 – Средний чек по клиентам из Самары</figcaption></figure>
+<ol start="16">
+<li>Подзапрос (SELECT name FROM Клиенты WHERE city = 'Москва') возвращает список имён клиентов из Москвы.</li>
+<li>Выполните запрос с группировкой по статусам:</li>
+</ol>
+<figure><img src="media/image152.png" style="max-width:100%;" alt="Запрос с группировкой по статусам" /><figcaption>Рисунок 148 – Запрос с группировкой по статусам</figcaption></figure>
+<ol start="18">
+<li>Обратите внимание, что статус «Новый» мог измениться после работы №3. Зафиксируйте актуальное распределение.</li>
+<li>Используйте HAVING для фильтрации групп. Выведите статусы, в которых общая сумма заказов превышает 5000:</li>
+</ol>
+<figure><img src="media/image153.png" style="max-width:100%;" alt="Статусы, в которых общая сумма заказов превышает 5000" /><figcaption>Рисунок 149 – Статусы, в которых общая сумма заказов превышает 5000</figcaption></figure>
+<ol start="20">
+<li><strong>Результат:</strong> 10 аналитических запросов с учётом изменённой структуры базы. Сравнительный анализ, как удаление заказа повлияло на средний чек и минимальную сумму.</li>
+</ol>
+`,
+
+practice5: `
+<h1>Практическая работа №5</h1>
+<p><strong>Цель работы:</strong> освоить сложные агрегации GROUP BY по нескольким полям и получить первичные навыки работы с оконными функциями (SUM() OVER, ROW_NUMBER() OVER) на данных, структура которых была изменена (добавлен email, переименован phone_number).</p>
+<ol>
+<li>Откройте business.db в DB Browser for SQLite.</li>
+<li>Выполните группировку по двум полям: статус заказа и город клиента (через связь по имени):</li>
+</ol>
+<figure><img src="media/image154.png" style="max-width:100%;" alt="Группировка по двум полям" /><figcaption>Рисунок 150 – Группировка по двум полям</figcaption></figure>
+<ol start="3">
+<li>Обратите внимание на клиента из Самары. Его заказы теперь группируются отдельно.</li>
+<li>Выполните группировку по городу клиента и товару, чтобы увидеть, какие товары популярны в разных городах:</li>
+</ol>
+<figure><img src="media/image155.png" style="max-width:100%;" alt="Группировка по городу клиента и товару" /><figcaption>Рисунок 151 – Группировка по городу клиента и товару</figcaption></figure>
+<ol start="5">
+<li>Оконная функция SUM(amount) OVER (PARTITION BY status) считает сумму в пределах группы статусов, но не сворачивает строки. Выполните:</li>
+</ol>
+<figure><img src="media/image156.png" style="max-width:100%;" alt="Оконная функция" /><figcaption>Рисунок 152 – Оконная функция</figcaption></figure>
+<ol start="6">
+<li>Сравните результат с обычным GROUP BY status. В оконной функции каждая строка сохраняется, а агрегат присваивается к ней.</li>
+<li>Выполните оконную функцию для расчёта средней суммы заказа по каждому клиенту без сворачивания в одну строку:</li>
+</ol>
+<figure><img src="media/image157.png" style="max-width:100%;" alt="Оконная функция для расчёта средней суммы заказа" /><figcaption>Рисунок 153 – Оконная функция для расчёта средней суммы заказа</figcaption></figure>
+<ol start="8">
+<li>Используйте ROW_NUMBER() для нумерации заказов каждого клиента по убыванию суммы:</li>
+</ol>
+<figure><img src="media/image158.png" style="max-width:100%;" alt="Нумерация заказов каждого клиента по убыванию суммы" /><figcaption>Рисунок 154 – Нумерация заказов каждого клиента по убыванию суммы</figcaption></figure>
+<ol start="9">
+<li>Клиент с самым дорогим заказом получит номер 1. Это полезно для поиска топ-заказов каждого клиента.</li>
+<li>Выполните накопительную сумму заказов во времени (используйте order_date):</li>
+</ol>
+<figure><img src="media/image159.png" style="max-width:100%;" alt="Накопительная сумма заказов" /><figcaption>Рисунок 155 – Накопительная сумма заказов</figcaption></figure>
+<ol start="11">
+<li>Добавьте в таблицу «Клиенты» ещё одного нового клиента через INSERT (например, «Егорова Елена», город «Самара», email egorova@example.com). Затем выполните группировку по городам и убедитесь, что Самара теперь представлена двумя клиентами.</li>
+</ol>
+<figure><img src="media/image160.png" style="max-width:100%;" alt="Добавление нового клиента" /><figcaption>Рисунок 156 – Добавление нового клиента</figcaption></figure>
+<figure><img src="media/image161.png" style="max-width:100%;" alt="Группировка по городам" /><figcaption>Рисунок 157 – Группировка по городам</figcaption></figure>
+<ol start="12">
+<li>Вычислите процент каждого заказа от общей суммы по всем заказам (используйте оконную функцию без PARTITION BY):</li>
+</ol>
+<figure><img src="media/image162.png" style="max-width:100%;" alt="Процент каждого заказа от общей суммы по всем заказам" /><figcaption>Рисунок 158 – Процент каждого заказа от общей суммы по всем заказам</figcaption></figure>
+<ol start="13">
+<li>1.0 нужно, чтобы результат был дробным (проценты). В SQLite целочисленное деление даёт целое число.</li>
+<li>Выполните запрос с двумя оконными функциями одновременно: ранг заказа по сумме (RANK()) и доля от общей суммы.</li>
+</ol>
+<figure><img src="media/image163.png" style="max-width:100%;" alt="Запрос с двумя оконными функциями одновременно" /><figcaption>Рисунок 159 – Запрос с двумя оконными функциями одновременно</figcaption></figure>
+<ol start="15">
+<li>Используйте FILTER для условной агрегации внутри оконной функции (если поддерживается версией SQLite). Альтернатива — CASE:</li>
+</ol>
+<figure><img src="media/image164.png" style="max-width:100%;" alt="Условная агрегация" /><figcaption>Рисунок 160 – Условная агрегация</figcaption></figure>
+<ol start="16">
+<li>Создайте представление (VIEW) «Аналитика_по_клиентам», которое содержит для каждого клиента: количество заказов, общую сумму, средний чек, максимальный заказ.</li>
+</ol>
+<figure><img src="media/image165.png" style="max-width:100%;" alt="Представление Аналитика_по_клиентам" /><figcaption>Рисунок 161 – Представление «Аналитика_по_клиентам»</figcaption></figure>
+<ol start="17">
+<li>Проверьте представление запросом SELECT * FROM Аналитика_по_клиентам.</li>
+<li>Экспортируйте результат представления в CSV через вкладку «Просмотр данных» → кнопка «Экспорт».</li>
+<li>5 примеров группировки, 6 оконных функций, созданное VIEW «Аналитика_по_клиентам» с учётом всех изменений в базе.</li>
+<li><strong>Результат:</strong> представление «Аналитика_по_клиентам», экспорт в CSV, запросы с оконными функциями.</li>
+</ol>
+`,
+
+practice6: `
+<h1>Практическая работа №6</h1>
+<p><strong>Цель работы:</strong> научиться применять SQL-запросы для выявления узких мест бизнес-процесса с учётом реальных изменений данных (добавление клиентов, удаление заказов, изменение статусов). Освоить расчёт времени нахождения заказа в статусах и построение воронки процесса.</p>
+<ol>
+<li>Откройте business.db.</li>
+<li>Убедитесь, что в таблице «Заказы» есть статусы: «Новый», «В обработке», «Доставлен».</li>
+<li>В работе №3 мы изменили статус заказа с «Новый» на «В обработке» для ноутбука. Теперь в таблице меньше заказов со статусом «Новый».</li>
+<li>Выполните запрос для подсчёта количества заказов в каждом статусе:</li>
+</ol>
+<figure><img src="media/image166.png" style="max-width:100%;" alt="Запрос для подсчёта количества заказов в каждом статусе" /><figcaption>Рисунок 162 – Запрос для подсчёта количества заказов в каждом статусе</figcaption></figure>
+<ol start="5">
+<li>Сравните полученное распределение с исходным (из лекции 6). Если статус «Новый» стал меньше — это результат нашей модификации.</li>
+<li>Для расчёта времени в статусе нужно добавить столбец status_start_date. Выполните:</li>
+</ol>
+<figure><img src="media/image167.png" style="max-width:100%;" alt="Добавление столбца status_start_date" /><figcaption>Рисунок 163 – Добавление столбца status_start_date</figcaption></figure>
+<ol start="7">
+<li>Установите для существующих заказов примерные даты начала статуса:</li>
+</ol>
+<figure><img src="media/image168.png" style="max-width:100%;" alt="Даты начала статуса" /><figcaption>Рисунок 164 – Даты начала статуса</figcaption></figure>
+<ol start="8">
+<li>Теперь найдите заказы, которые находятся в статусе «Новый» дольше 4 часов:</li>
+</ol>
+<figure><img src="media/image169.png" style="max-width:100%;" alt="Заказы, которые находятся в статусе Новый дольше 4 часов" /><figcaption>Рисунок 165 – Заказы, которые находятся в статусе «Новый» дольше 4 часов</figcaption></figure>
+<ol start="9">
+<li>julianday('now') — текущая дата в юлианском формате. Разница в днях умножается на 24 для перевода в часы.</li>
+<li>Аналогично найдите заказы в статусе «В обработке» дольше 48 часов.</li>
+<li>Создайте новую таблицу StatusLog для отслеживания истории изменений статусов:</li>
+</ol>
+<figure><img src="media/image170.png" style="max-width:100%;" alt="Создание новой таблицы StatusLog" /><figcaption>Рисунок 166 – Создание новой таблицы StatusLog</figcaption></figure>
+<ol start="12">
+<li>Вставьте тестовые записи об изменении статусов:</li>
+</ol>
+<figure><img src="media/image171.png" style="max-width:100%;" alt="Тестовые записи об изменении статусов" /><figcaption>Рисунок 167 – Тестовые записи об изменении статусов</figcaption></figure>
+<ol start="13">
+<li>Выполните запрос для расчёта времени между сменой статусов:</li>
+</ol>
+<figure><img src="media/image172.png" style="max-width:100%;" alt="Запрос для расчёта времени между сменой статусов" /><figcaption>Рисунок 168 – Запрос для расчёта времени между сменой статусов</figcaption></figure>
+<ol start="14">
+<li>Функция LAG() обращается к предыдущей записи в рамках группы PARTITION BY order_id.</li>
+<li>Постройте воронку процесса (конверсию между статусами). Сначала посчитайте общее количество заказов:</li>
+</ol>
+<figure><img src="media/image173.png" style="max-width:100%;" alt="Общее количество заказов" /><figcaption>Рисунок 169 – Общее количество заказов</figcaption></figure>
+<ol start="16">
+<li>Посчитайте, сколько заказов достигли статуса «В обработке»:</li>
+</ol>
+<figure><img src="media/image174.png" style="max-width:100%;" alt="Количество заказов В обработке" /><figcaption>Рисунок 170 – Количество заказов «В обработке»</figcaption></figure>
+<ol start="17">
+<li>Посчитайте, сколько заказов достигли статуса «Доставлен»:</li>
+</ol>
+<figure><img src="media/image175.png" style="max-width:100%;" alt="Количество заказов Доставлен" /><figcaption>Рисунок 171 – Количество заказов «Доставлен»</figcaption></figure>
+<ol start="18">
+<li>Используя CTE (Common Table Expression), рассчитайте проценты переходов (воронку):</li>
+</ol>
+<figure><img src="media/image176.png" style="max-width:100%;" alt="Процент переходов" /><figcaption>Рисунок 172 – Процент переходов</figcaption></figure>
+<ol start="19">
+<li>Сформулируйте управленческое решение на основе полученных данных. Если процент доставки низкий — что делать?</li>
+<li><strong>Результат:</strong> распределение по статусам, выявление заказов-нарушителей, воронка конверсии, текстовый отчёт с рекомендациями.</li>
+</ol>
+`,
+
+practice7: `
+<h1>Практическая работа №7</h1>
+<p><strong>Цель работы:</strong> освоить создание связанных таблиц с использованием внешних ключей (FOREIGN KEY) на примере расширения существующей базы business.db. Научиться связывать новые таблицы с уже существующими (например, с таблицей «Клиенты», в которой изменена структура: переименован phone в phone_number, добавлен email).</p>
+<ol>
+<li>Откройте business.db.</li>
+<li>Создайте новую таблицу «Адреса_доставки», связанную с таблицей «Клиенты» через client_id (внешний ключ):</li>
+</ol>
+<figure><img src="media/image177.png" style="max-width:100%;" alt="Создание новой таблицы" /><figcaption>Рисунок 173 – Создание новой таблицы</figcaption></figure>
+<ol start="3">
+<li>FOREIGN KEY обеспечивает ссылочную целостность: нельзя вставить адрес для несуществующего клиента. Поле is_primary (1 — основной адрес, 0 — дополнительный).</li>
+<li>Добавьте тестовые адреса для существующих клиентов (например, для Иванова Ивана с id=1 и для Петровой Анны с id=2):</li>
+</ol>
+<figure><img src="media/image178.png" style="max-width:100%;" alt="Добавление тестовых адресов" /><figcaption>Рисунок 174 – Добавление тестовых адресов</figcaption></figure>
+<ol start="5">
+<li>Добавьте адрес для клиента «Сидоров Петр» (в работе №3 мы его добавили, найдите его id запросом):</li>
+</ol>
+<figure><img src="media/image179.png" style="max-width:100%;" alt="Поиск id клиента" /><figcaption>Рисунок 175 – Поиск id клиента</figcaption></figure>
+<ol start="6">
+<li>Затем добавьте адрес, используя найденный id.</li>
+</ol>
+<figure><img src="media/image180.png" style="max-width:100%;" alt="Добавление адреса клиенту" /><figcaption>Рисунок 176 – Добавление адреса клиенту</figcaption></figure>
+<ol start="7">
+<li>Выполните запрос с JOIN, чтобы вывести клиента и все его адреса:</li>
+</ol>
+<figure><img src="media/image181.png" style="max-width:100%;" alt="Вывод клиента и их адреса" /><figcaption>Рисунок 177 – Вывод клиента и их адреса</figcaption></figure>
+<ol start="8">
+<li>Создайте таблицу «История_изменений_клиентов» для логирования изменений данных о клиентах (например, когда меняется телефон или email). Включите поля: log_id, client_id, changed_field, old_value, new_value, change_date.</li>
+</ol>
+<figure><img src="media/image182.png" style="max-width:100%;" alt="Создание таблицы История_изменений_клиентов" /><figcaption>Рисунок 178 – Создание таблицы «История_изменений_клиентов»</figcaption></figure>
+<ol start="9">
+<li>Учтите, что в таблице «Клиенты» поле phone переименовано в phone_number, поэтому в логах указывайте именно phone_number.</li>
+<li>Вставьте тестовую запись в лог об изменении email для Иванова Ивана.</li>
+</ol>
+<figure><img src="media/image183.png" style="max-width:100%;" alt="Тестовая запись в лог об изменении email для Иванова Ивана" /><figcaption>Рисунок 179 – Тестовая запись в лог об изменении email для Иванова Ивана</figcaption></figure>
+<ol start="11">
+<li>Создайте представление VIEW «Клиенты_с_адресами», которое объединяет «Клиенты» и «Адреса_доставки», показывая основной адрес (где is_primary = 1).</li>
+</ol>
+<figure><img src="media/image184.png" style="max-width:100%;" alt="Создание представления Клиенты_с_адресами" /><figcaption>Рисунок 180 – Создание представления «Клиенты_с_адресами»</figcaption></figure>
+<ol start="12">
+<li>Проверьте представление запросом SELECT * FROM Клиенты_с_адресами;.</li>
+<li>Представления (VIEW) не хранят данные, а являются сохранёнными запросами. Они полезны для упрощения сложных JOIN.</li>
+<li>Создайте представление «Заказы_с_контактами», которое показывает заказ, имя клиента, его телефон, email и основной адрес.</li>
+</ol>
+<figure><img src="media/image185.png" style="max-width:100%;" alt="Представление Заказы_с_контактами" /><figcaption>Рисунок 181 – Представление «Заказы_с_контактами»</figcaption></figure>
+<ol start="15">
+<li>Экспортируйте результат этого представления в CSV.</li>
+<li>Используя ALTER TABLE, добавьте в таблицу «Заказы» столбец delivery_address_id (внешний ключ на таблицу «Адреса_доставки»).</li>
+</ol>
+<figure><img src="media/image186.png" style="max-width:100%;" alt="Добавление столбца delivery_address_id" /><figcaption>Рисунок 182 – Добавление столбца delivery_address_id</figcaption></figure>
+<ol start="17">
+<li>Обновите существующие заказы, присвоив им delivery_address_id (например, заказы Иванова Ивана — на его основной адрес).</li>
+</ol>
+<figure><img src="media/image187.png" style="max-width:100%;" alt="Обновление существующих заказов" /><figcaption>Рисунок 183 – Обновление существующих заказов</figcaption></figure>
+<ol start="18">
+<li>Выполните сложный запрос, выводящий заказ, товар, сумму, имя клиента и полный адрес доставки:</li>
+</ol>
+<figure><img src="media/image188.png" style="max-width:100%;" alt="Запрос, выводящий заказ, товар, сумму, имя клиента и полный адрес доставки" /><figcaption>Рисунок 184 – Запрос, выводящий заказ, товар, сумму, имя клиента и полный адрес доставки</figcaption></figure>
+<ol start="19">
+<li>Что произойдёт, если попытаться удалить клиента, у которого есть связанные записи в таблице «Адреса_доставки» (без каскадного удаления)?</li>
+<li><strong>Результат:</strong> созданы таблицы «Адреса_доставки» и «История_изменений_клиентов», созданы VIEW «Клиенты_с_адресами» и «Заказы_с_контактами», добавлен и заполнен столбец delivery_address_id.</li>
+</ol>
+`,
+
+practice8: `
+<h1>Практическая работа №8</h1>
+<p><strong>Цель работы:</strong> интегрировать все полученные знания SQL в единый аналитический конвейер с учётом всех изменений, внесённых в базу данных в работах №1-7 (переименование столбцов, добавление новых таблиц, внешних ключей, представлений). Сформулировать управленческие выводы на основе реальных данных.</p>
+<ol>
+<li>Откройте business.db в DB Browser for SQLite.</li>
+<li>Выполните запрос для проверки целостности данных: все ли заказы имеют корректный delivery_address_id?</li>
+</ol>
+<figure><img src="media/image189.png" style="max-width:100%;" alt="Проверка целостности данных" /><figcaption>Рисунок 185 – Проверка целостности данных</figcaption></figure>
+<ol start="3">
+<li>Выведите топ-3 клиентов по общей сумме заказов, включая их телефон и основной адрес.</li>
+<li>Сгруппируйте выручку по городам клиентов, используя JOIN «Заказы» и «Клиенты». Учтите, что у клиента «Сидоров Петр» город изменён на «Самара».</li>
+</ol>
+<figure><img src="media/image190.png" style="max-width:100%;" alt="Выручка по городам клиентов" /><figcaption>Рисунок 186 – Выручка по городам клиентов</figcaption></figure>
+<ol start="5">
+<li>Рассчитайте средний чек по клиентам, у которых заполнен email, и по клиентам без email. Есть ли разница?</li>
+</ol>
+<figure><img src="media/image191.png" style="max-width:100%;" alt="Средний чек по клиентам" /><figcaption>Рисунок 187 – Средний чек по клиентам</figcaption></figure>
+<ol start="6">
+<li>Выведите клиентов, у которых есть несколько адресов доставки (больше одного). Используйте GROUP BY client_id HAVING COUNT(*) > 1.</li>
+</ol>
+<figure><img src="media/image192.png" style="max-width:100%;" alt="Клиенты, у которых есть несколько адресов доставки" /><figcaption>Рисунок 188 – Клиенты, у которых есть несколько адресов доставки</figcaption></figure>
+<ol start="7">
+<li>Используя таблицу StatusLog, рассчитайте среднее время между статусами «В обработке» → «Доставлен».</li>
+</ol>
+<figure><img src="media/image193.png" style="max-width:100%;" alt="Расчёт среднего времени между статусами В обработке → Доставлен" /><figcaption>Рисунок 189 – Расчёт среднего времени между статусами «В обработке» → «Доставлен»</figcaption></figure>
+<ol start="8">
+<li>Постройте воронку, используя не только текущие статусы, но и историю из StatusLog, чтобы учесть заказы, которые могли быть возвращены на доработку.</li>
+</ol>
+<figure><img src="media/image194.png" style="max-width:100%;" alt="Воронка" /><figcaption>Рисунок 190 – Воронка</figcaption></figure>
+<ol start="9">
+<li>Выполните запрос, который показывает, какой товар был удалён (если сохранили информацию отдельно). Если нет — сформулируйте, как можно логировать удаления.</li>
+</ol>
+<figure><img src="media/image195.png" style="max-width:100%;" alt="Запрос, который показывает, какой товар был удалён" /><figcaption>Рисунок 191 – Запрос, который показывает, какой товар был удалён</figcaption></figure>
+<ol start="10">
+<li>Разделите клиентов на сегменты по сумме их заказов (используйте CASE):<br>
+«Крупные» — сумма > 50000<br>
+«Средние» — от 10000 до 50000<br>
+«Малые» — менее 10000</li>
+</ol>
+<figure><img src="media/image196.png" style="max-width:100%;" alt="Клиенты на сегменты по сумме их заказов" /><figcaption>Рисунок 192 – Клиенты на сегменты по сумме их заказов</figcaption></figure>
+<ol start="11">
+<li>Выполните запрос, выводящий сегмент каждого клиента и количество заказов в сегменте.</li>
+</ol>
+<figure><img src="media/image197.png" style="max-width:100%;" alt="Сегмент каждого клиента и количество заказов в сегменте" /><figcaption>Рисунок 193 – Сегмент каждого клиента и количество заказов в сегменте</figcaption></figure>
+<ol start="12">
+<li>Какой товар принёс наибольшую выручку после удаления самого дешёвого заказа?</li>
+</ol>
+<figure><img src="media/image198.png" style="max-width:100%;" alt="Товар с наибольшей выручкой после удаления самого дешёвого заказа" /><figcaption>Рисунок 194 – Товар с наибольшей выручкой после удаления самого дешёвого заказа</figcaption></figure>
+<ol start="13">
+<li>Сравните предпочтения по товарам в Москве и Самаре. Есть ли различия?</li>
+</ol>
+<figure><img src="media/image199.png" style="max-width:100%;" alt="Сравнение предпочтений по товарам в Москве и Самаре" /><figcaption>Рисунок 195 – Сравнение предпочтений по товарам в Москве и Самаре</figcaption></figure>
+<ol start="14">
+<li>Проверьте, есть ли товары, которые часто остаются неоплаченными. Выполните:</li>
+</ol>
+<figure><img src="media/image200.png" style="max-width:100%;" alt="Есть ли товары, которые часто остаются неоплаченными" /><figcaption>Рисунок 196 – Есть ли товары, которые часто остаются неоплаченными</figcaption></figure>
+<ol start="15">
+<li>Создайте итоговое представление VIEW_Executive_Dashboard, которое содержит:<br>
+- общую выручку<br>
+- количество заказов<br>
+- средний чек<br>
+- количество клиентов<br>
+- процент доставленных заказов</li>
+</ol>
+<figure><img src="media/image201.png" style="max-width:100%;" alt="Запрос для создания представления VIEW_Executive_Dashboard" /><figcaption>Рисунок 197 – Запрос для создания представления VIEW_Executive_Dashboard</figcaption></figure>
+<ol start="16">
+<li>Проверьте представление и экспортируйте его в CSV.</li>
+<li><strong>Управленческий вывод 1:</strong> на основе данных о времени в статусах — какой этап процесса требует автоматизации?</li>
+<li><strong>Управленческий вывод 2:</strong> на основе сегментации — для какого сегмента клиентов внедрить персональные скидки?</li>
+<li><strong>Управленческий вывод 3:</strong> сравните итоговую воронку с нормативной BPMN-схемой из Лекции 6. Укажите расхождения.</li>
+<li><strong>Результат:</strong> файл business.db со всеми изменениями, CSV-экспорты представлений, текстовый документ с 3 управленческими выводами на основе выполненных запросов.</li>
+</ol>
+`,
+        // ИТОГОВЫЙ ТЕСТ
+        test: `
+<div class="test-container">
+    <div class="test-header">
+        <h1>📝 Итоговое тестирование</h1>
+        <p>Проверьте свои знания по курсу «Бизнес-процессы и аналитика данных»</p>
+    </div>
+    <div class="test-info">
+        <div class="test-info-item">📊 Максимальный балл: 30</div>
+        <div class="test-info-item">✅ Проходной балл (70%): 21</div>
+        <div class="test-info-item">⏱️ Время выполнения: 45 минут</div>
+        <div class="test-info-item" id="timer">⏰ Осталось: 45:00</div>
+    </div>
+    <div id="testQuestions"></div>
+    <div style="text-align: center;">
+        <button type="button" class="btn-submit" id="submitTestBtn">✅ Завершить тест</button>
+        <button type="button" class="btn-submit btn-reset" id="resetTestBtn">🔄 Начать заново</button>
+    </div>
+    <div id="testResults" class="results hidden"></div>
+</div>
+
+
+`
+    }; // <-- ЗАКРЫВАЕМ ОБЪЕКТ contentData (ОДНА фигурная скобка)
+	function initTest() {
+    const allQuestions = {
+        q1: { id: 1, type: "single", text: "Что такое бизнес-процесс?", options: ["Любая деятельность сотрудника в течение рабочего дня", "Повторяющаяся последовательность действий, выполняемая различными исполнителями для получения измеримого результата", "Организационная структура компании", "Программное обеспечение для управления задачами"], answer: "B" },
+        q2: { id: 2, type: "single", text: "Какая нотация является международным стандартом (ISO/IEC 19510)?", options: ["IDEF0", "EPC", "BPMN", "UML"], answer: "C" },
+        q3: { id: 3, type: "single", text: "Какой шлюз BPMN используется для запуска всех исходящих веток одновременно?", options: ["Эксклюзивный (XOR)", "Неэксклюзивный (OR)", "Параллельный (AND)", "Комплексный"], answer: "C" },
+        q4: { id: 4, type: "single", text: "Какой оператор SQL используется для сортировки результатов запроса?", options: ["GROUP BY", "SORT BY", "ORDER BY", "ARRANGE BY"], answer: "C" },
+        q5: { id: 5, type: "single", text: "Какая агрегатная функция вычисляет среднее арифметическое значений столбца?", options: ["SUM", "COUNT", "AVG", "MEDIAN"], answer: "C" },
+        q6: { id: 6, type: "single", text: "Какой оператор SQL фильтрует группы после их формирования (после GROUP BY)?", options: ["WHERE", "FILTER", "HAVING", "WITH"], answer: "C" },
+        q7: { id: 7, type: "single", text: "Что означает сокращение SQL?", options: ["Structured Query Language", "Simple Question Language", "Standard Query Logic", "Sequential Query Language"], answer: "A" },
+        q8: { id: 8, type: "single", text: "Какой тип данных в SQLite предназначен для хранения целых чисел?", options: ["TEXT", "INTEGER", "REAL", "BLOB"], answer: "B" },
+        q9: { id: 9, type: "single", text: "Какой логический оператор в SQL используется для проверки выполнения обоих условий одновременно?", options: ["OR", "XOR", "AND", "NOT"], answer: "C" },
+        q10: { id: 10, type: "single", text: "Какой тип стрелки в IDEF0 показывает, какие ресурсы используются для выполнения функции?", options: ["Вход", "Выход", "Управление", "Механизм"], answer: "D" },
+        q11: { id: 11, type: "single", text: "Что из перечисленного является внутренним источником данных для компании?", options: ["Данные Росстата", "Отзывы клиентов в социальных сетях", "CRM-система компании", "Информация о ценах конкурентов"], answer: "C" },
+        q12: { id: 12, type: "single", text: "Какой SQL-запрос удаляет все записи из таблицы «Заказы»?", options: ["REMOVE FROM Заказы", "DROP TABLE Заказы", "DELETE FROM Заказы", "TRUNCATE Заказы"], answer: "C" },
+        q13: { id: 13, type: "single", text: "Какой ключ обеспечивает ссылочную целостность между таблицами?", options: ["Первичный ключ", "Внешний ключ", "Составной ключ", "Индекс"], answer: "B" },
+        q14: { id: 14, type: "single", text: "Какая команда SQL изменяет структуру существующей таблицы?", options: ["UPDATE TABLE", "CHANGE TABLE", "MODIFY TABLE", "ALTER TABLE"], answer: "D" },
+        q15: { id: 15, type: "single", text: "Как называется четырёхуровневая схема движения данных в бизнесе, представленная в Лекции 3?", options: ["Бизнес-процесс → Excel → Отчёт → Решение", "Бизнес-процесс → оперативная БД → хранилище данных → BI-система", "Данные → Аналитика → Отчёт → Управление", "CRM → ERP → WMS → BI"], answer: "B" },
+        q16: { id: 16, type: "multiple", text: "Какие элементы относятся к базовым элементам BPMN?", options: ["Овал (начало/конец)", "Прямоугольник (действие)", "Круг (комментарий)", "Ромб (решение/шлюз)"], answer: ["A","B","D"] },
+        q17: { id: 17, type: "multiple", text: "Какие преимущества даёт формализация бизнес-процессов?", options: ["Стандартизация и оперативность", "Увеличение количества сотрудников", "Прозрачность и контроль", "Сохранение знаний и обучение"], answer: ["A","C","D"] },
+        q18: { id: 18, type: "multiple", text: "Какие типы шлюзов существуют в BPMN?", options: ["Параллельный (AND)", "Эксклюзивный (XOR)", "Циклический (LOOP)", "Неэксклюзивный (OR)"], answer: ["A","B","D"] },
+        q19: { id: 19, type: "multiple", text: "Какие агрегатные функции существуют в SQL?", options: ["SUM", "MULTIPLY", "AVG", "COUNT"], answer: ["A","C","D"] },
+        q20: { id: 20, type: "multiple", text: "Какие операторы сравнения используются в SQL?", options: ["=", "<>", "!=", "!=="], answer: ["A","B","C"] },
+        q21: { id: 21, type: "multiple", text: "Какие элементы являются нотациями моделирования бизнес-процессов?", options: ["BPMN", "JSON", "EPC", "IDEF0"], answer: ["A","C","D"] },
+        q22: { id: 22, type: "multiple", text: "Какие действия относятся к командам DML?", options: ["CREATE TABLE", "INSERT INTO", "UPDATE", "DELETE"], answer: ["B","C","D"] },
+        q23: { id: 23, type: "multiple", text: "Какие типы маршрутизации существуют для процесса «Согласование» в BPMN?", options: ["Всем сразу (параллельное)", "По очереди (последовательное)", "В случайном порядке", "Смешанное"], answer: ["A","B","D"] },
+        q24: { id: 24, type: "multiple", text: "Какие типы источников данных выделяются в лекции 3?", options: ["Внутренние", "Внешние", "Искусственные", "Данные от людей"], answer: ["A","B","D"] },
+        q25: { id: 25, type: "multiple", text: "Какие ограничения целостности данных могут быть заданы при создании таблицы в SQL?", options: ["NOT NULL", "PRIMARY KEY", "UNIQUE", "FOREIGN KEY"], answer: ["A","B","C","D"] },
+        q26: { id: 26, type: "text", text: "Напишите SQL-запрос для выбора всех столбцов из таблицы «Клиенты».", answer: "SELECT * FROM Клиенты;" },
+        q27: { id: 27, type: "text", text: "Напишите SQL-запрос для подсчёта общего количества заказов в таблице «Заказы».", answer: "SELECT COUNT(*) FROM Заказы;" },
+        q28: { id: 28, type: "text", text: "Напишите SQL-запрос для удаления заказа с order_id = 5 из таблицы «Заказы».", answer: "DELETE FROM Заказы WHERE order_id = 5;" },
+        q29: { id: 29, type: "text", text: "Напишите SQL-запрос для добавления нового столбца «birth_date» с типом TEXT в таблицу «Клиенты».", answer: "ALTER TABLE Клиенты ADD COLUMN birth_date TEXT;" },
+        q30: { id: 30, type: "text", text: "Напишите SQL-запрос для вывода имён клиентов и общей суммы их заказов (с JOIN).", answer: "SELECT Клиенты.name, SUM(Заказы.amount) FROM Клиенты JOIN Заказы ON Клиенты.id = Заказы.client_id GROUP BY Клиенты.name;" }
+    };
+    
+    let currentQuestions = [];
+    let timerInterval;
+    let timeLeft = 45 * 60;
+    
+    function shuffleArray(arr) {
+        for (let i = arr.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+    
+    function renderTest() {
+        currentQuestions = shuffleArray([...Object.values(allQuestions)]);
+        const container = document.getElementById('testQuestions');
+        if (!container) return;
+        
+        let html = '';
+        let qNum = 1;
+        
+        currentQuestions.forEach(q => {
+            html += '<div class="question-block">';
+            html += '<div class="question-text"><span class="question-number">Вопрос ' + qNum + '</span> ' + q.text + '</div>';
+            
+            if (q.type === 'single') {
+                const letters = ['A', 'B', 'C', 'D'];
+                html += '<div class="options">';
+                q.options.forEach((opt, idx) => {
+                    html += '<div class="option"><input type="radio" name="q' + q.id + '" value="' + letters[idx] + '" id="q' + q.id + '_' + letters[idx] + '"><label for="q' + q.id + '_' + letters[idx] + '"><strong>' + letters[idx] + '</strong>) ' + opt + '</label></div>';
+                });
+                html += '</div>';
+            } else if (q.type === 'multiple') {
+                const letters = ['A', 'B', 'C', 'D'];
+                html += '<div class="options">';
+                q.options.forEach((opt, idx) => {
+                    html += '<div class="option"><input type="checkbox" name="q' + q.id + '" value="' + letters[idx] + '" id="q' + q.id + '_' + letters[idx] + '"><label for="q' + q.id + '_' + letters[idx] + '"><strong>' + letters[idx] + '</strong>) ' + opt + '</label></div>';
+                });
+                html += '</div>';
+            } else if (q.type === 'text') {
+                html += '<div class="options"><input type="text" class="text-answer" name="q' + q.id + '" placeholder="Введите SQL-запрос..." style="width:100%; padding:10px; margin-top:10px; border:1px solid #ddd; border-radius:8px;"></div>';
+            }
+            
+            html += '<div class="feedback hidden" id="fb_' + q.id + '"></div>';
+            html += '</div>';
+            qNum++;
+        });
+        
+        container.innerHTML = html;
+        startTimer();
+    }
+    
+    function calculateScore() {
+        let score = 0;
+        currentQuestions.forEach(q => {
+            let isCorrect = false;
+            if (q.type === 'single') {
+                const selected = document.querySelector('input[name="q' + q.id + '"]:checked');
+                if (selected && selected.value === q.answer) isCorrect = true;
+            } else if (q.type === 'multiple') {
+                const selected = Array.from(document.querySelectorAll('input[name="q' + q.id + '"]:checked')).map(cb => cb.value);
+                if (selected.length === q.answer.length && q.answer.every(a => selected.includes(a))) isCorrect = true;
+            } else if (q.type === 'text') {
+                const input = document.querySelector('input[name="q' + q.id + '"]');
+                if (input) {
+                    const userAnswer = input.value.trim().toUpperCase().replace(/\s+/g, ' ');
+                    const correctAns = q.answer.toUpperCase().replace(/\s+/g, ' ');
+                    if (userAnswer === correctAns) isCorrect = true;
+                }
+            }
+            if (isCorrect) score++;
+            
+            const fb = document.getElementById('fb_' + q.id);
+            if (fb) {
+                fb.innerHTML = isCorrect ? '✅ Верно!' : '❌ Неверно. Правильный ответ: ' + (q.answer || 'см. лекцию');
+                fb.classList.remove('hidden');
+                fb.classList.add(isCorrect ? 'correct' : 'incorrect');
+            }
+        });
+        return score;
+    }
+    
+    function getGrade(score) {
+        if (score >= 27) return "Отлично";
+        if (score >= 23) return "Хорошо";
+        if (score >= 21) return "Удовлетворительно";
+        return "Неудовлетворительно";
+    }
+    
+    function showResults(score) {
+        const resultsDiv = document.getElementById('testResults');
+        const grade = getGrade(score);
+        const passed = score >= 21;
+        resultsDiv.innerHTML = '<h3>📊 Результаты тестирования</h3><p>Ваш результат: <span class="score">' + score + ' / 30 баллов</span></p><p class="grade">Оценка: <strong style="color: ' + (passed ? '#2c7a4d' : '#c62828') + '">' + grade + '</strong></p><p>' + (passed ? '🎉 Поздравляем! Вы успешно прошли тест.' : '😔 К сожалению, вы не набрали проходной балл. Попробуйте ещё раз.') + '</p><p>Проходной балл: 21 (70%)</p>';
+        resultsDiv.classList.remove('hidden');
+        if (timerInterval) clearInterval(timerInterval);
+    }
+    
+    function startTimer() {
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                alert("Время вышло!");
+                const score = calculateScore();
+                showResults(score);
+            } else {
+                timeLeft--;
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                const timerDisplay = document.getElementById('timer');
+                if (timerDisplay) timerDisplay.innerHTML = '⏰ Осталось: ' + minutes.toString().padStart(2,'0') + ':' + seconds.toString().padStart(2,'0');
+            }
+        }, 1000);
+    }
+    
+    renderTest();
+    
+    document.getElementById('submitTestBtn').onclick = function() {
+        const score = calculateScore();
+        showResults(score);
+        if (timerInterval) clearInterval(timerInterval);
+    };
+    
+    document.getElementById('resetTestBtn').onclick = function() {
+        if (confirm('Вы уверены, что хотите начать тест заново?')) {
+            if (timerInterval) clearInterval(timerInterval);
+            timeLeft = 45 * 60;
+            renderTest();
+            document.getElementById('testResults').classList.add('hidden');
+        }
+    };
+}
+function showPage(pageId) {
+    const contentDiv = document.getElementById('main-content');
+    if (!contentDiv) return;
+    
+    if (pageId === 'home') {
+        console.log('ПЕРЕХОД НА ГЛАВНУЮ СТРАНИЦУ! СЕЙЧАС БУДЕТ ОБНОВЛЕНИЕ');
+        const homePageHtml = document.getElementById('home-page');
+        if (homePageHtml) contentDiv.innerHTML = homePageHtml.innerHTML;
+        document.querySelectorAll('.module-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const target = this.getAttribute('data-page');
+                if (target && contentData[target]) showPage(target);
+            });
+        });
+    } else if (contentData[pageId]) {
+        // Получаем номер лекции или практики из pageId
+        let contentHtml = contentData[pageId];
+        
+        // Добавляем навигационные кнопки только для лекций
+        if (pageId.startsWith('lecture')) {
+            const lectureNum = parseInt(pageId.replace('lecture', ''));
+            const nextLectureNum = lectureNum + 1;
+            const prevLectureNum = lectureNum - 1;
+            
+            let navButtons = '<div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #e0e0e0; display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap;">';
+            
+            // Кнопка "Назад" для предыдущей лекции
+            if (prevLectureNum >= 1) {
+                navButtons += `<button onclick="showPage('lecture${prevLectureNum}')" style="background: #6c757d; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;">← Лекция ${prevLectureNum}</button>`;
+            } else {
+                navButtons += `<div style="width: 120px;"></div>`;
+            }
+            
+            // Кнопка "Перейти к практической работе"
+            navButtons += `<button onclick="showPage('practice${lectureNum}')" style="background: #2c7a4d; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;">📝 Перейти к практической работе №${lectureNum}</button>`;
+            
+            // Кнопка "Вперед" для следующей лекции
+            if (nextLectureNum <= 6) {
+                navButtons += `<button onclick="showPage('lecture${nextLectureNum}')" style="background: #0066cc; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;">Лекция ${nextLectureNum} →</button>`;
+            }
+            
+            navButtons += '</div>';
+            
+            // Добавляем кнопки в конец содержимого
+            contentHtml += navButtons;
+        }
+        
+        // Добавляем навигационные кнопки для практических работ
+        if (pageId.startsWith('practice')) {
+            const practiceNum = parseInt(pageId.replace('practice', ''));
+            const nextPracticeNum = practiceNum + 1;
+            const prevPracticeNum = practiceNum - 1;
+            
+            let navButtons = '<div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #e0e0e0; display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap;">';
+            
+            // Кнопка "Назад" для предыдущей практики
+            if (prevPracticeNum >= 1) {
+                navButtons += `<button onclick="showPage('practice${prevPracticeNum}')" style="background: #6c757d; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;">← Практическая работа №${prevPracticeNum}</button>`;
+            } else {
+                navButtons += `<div style="width: 120px;"></div>`;
+            }
+            
+            // Кнопка "Вернуться к лекции"
+            navButtons += `<button onclick="showPage('lecture${practiceNum}')" style="background: #0066cc; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;">📖 Вернуться к лекции №${practiceNum}</button>`;
+            
+            // Кнопка "Вперед" для следующей практики
+            if (nextPracticeNum <= 8) {
+                navButtons += `<button onclick="showPage('practice${nextPracticeNum}')" style="background: #2c7a4d; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;">Практическая работа №${nextPracticeNum} →</button>`;
+            }
+            
+            navButtons += '</div>';
+            
+            // Добавляем кнопки в конец содержимого
+            contentHtml += navButtons;
+        }
+        
+        contentDiv.innerHTML = contentHtml;
+        if (pageId === 'test') setTimeout(initTest, 100);
+    } else {
+        contentDiv.innerHTML = '<p>Страница не найдена</p>';
+    }
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('data-page') === pageId) link.classList.add('active');
+    });
+}
+// Делаем функцию глобальной
+window.showPage = showPage;
+
+// Ждем загрузки страницы
+document.addEventListener('DOMContentLoaded', function() {
+    showPage('home');
+    
+    const homeBtn = document.getElementById('homeButton');
+if (homeBtn) {
+    homeBtn.onclick = function(e) {
+        e.preventDefault();
+        // ПРОСТО ПЕРЕЗАГРУЖАЕМ СТРАНИЦУ
+        location.reload();
+        return false;
+    };
+    console.log('✅ Кнопка homeButton перезагружает страницу!');
+}
+    
+    const faqLink = document.getElementById('faq-link');
+    if (faqLink) {
+        faqLink.onclick = function(e) {
+            e.preventDefault();
+            window.open('https://vk.com/irkaburko', '_blank');
+        };
+    }
+    
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const page = link.getAttribute('data-page');
+            if (page) showPage(page);
+        });
+    });
+});
+</script>
+</body>
+</html>
