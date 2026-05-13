@@ -1,5 +1,3 @@
-﻿Вот полный HTML-код сайта с лекциями и практическими работами из вашего файла. Все тексты, таблицы и изображения интегрированы в одну структурированную страницу с удобной навигацией.
-```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -559,7 +557,7 @@
 
     <div class="content">
         <div id="main-content" class="content-card">
-            <!-- Главная страница будет загружена через JS, но резервно встроим -->
+            
             <div id="home-page">
                 <div class="hero">
                     <h1>📊 Бизнес-процессы и аналитика данных</h1>
@@ -595,9 +593,9 @@
 <a href="#" id="faq-link" class="faq-btn" title="Задать вопрос ВКонтакте">📱</a>
 
 <script>
-    // Содержимое всех лекций и практических работ (полные тексты без сокращений, таблицы в HTML)
+    
     const contentData = {
-        // Лекция 1
+        
         lecture1: `
 <h1>Лекция 1. Основы моделирования бизнес-процессов в организационных системах</h1>
 <h2>План</h2>
@@ -657,7 +655,7 @@
 </ol>
 `,
 
-        // Лекция 2 – с таблицами в HTML (символы можно добавить позже)
+        
         lecture2: `
 <h1>Лекция 2. Формальные модели бизнес-процессов: BPMN, EPC, IDEF0</h1>
 <h2>План</h2>
@@ -1477,7 +1475,7 @@ HAVING условие_для_групп;</code></pre>
 </ol>
 `,
 
-        // Практические работы без сокращений
+        
         practice1: `
 <h1>Практическая работа №1</h1>
 <p><strong>Цель работы:</strong> научиться визуализировать простой бизнес-процесс с использованием базовых элементов нотации BPMN (овал — начало/конец, прямоугольник — действие, ромб — решение).</p>
@@ -1972,7 +1970,7 @@ practice8: `
 <li><strong>Результат:</strong> файл business.db со всеми изменениями, CSV-экспорты представлений, текстовый документ с 3 управленческими выводами на основе выполненных запросов.</li>
 </ol>
 `,
-        // ИТОГОВЫЙ ТЕСТ
+        
         test: `
 <div class="test-container">
     <div class="test-header">
@@ -1995,8 +1993,8 @@ practice8: `
 
 
 `
-    }; // <-- ЗАКРЫВАЕМ ОБЪЕКТ contentData (ОДНА фигурная скобка)
-	function initTest() {
+    }; 
+function initTest() {
     const allQuestions = {
         q1: { id: 1, type: "single", text: "Что такое бизнес-процесс?", options: ["Любая деятельность сотрудника в течение рабочего дня", "Повторяющаяся последовательность действий, выполняемая различными исполнителями для получения измеримого результата", "Организационная структура компании", "Программное обеспечение для управления задачами"], answer: "B" },
         q2: { id: 2, type: "single", text: "Какая нотация является международным стандартом (ISO/IEC 19510)?", options: ["IDEF0", "EPC", "BPMN", "UML"], answer: "C" },
@@ -2007,12 +2005,44 @@ practice8: `
         q7: { id: 7, type: "single", text: "Что означает сокращение SQL?", options: ["Structured Query Language", "Simple Question Language", "Standard Query Logic", "Sequential Query Language"], answer: "A" },
         q8: { id: 8, type: "single", text: "Какой тип данных в SQLite предназначен для хранения целых чисел?", options: ["TEXT", "INTEGER", "REAL", "BLOB"], answer: "B" },
         q9: { id: 9, type: "single", text: "Какой логический оператор в SQL используется для проверки выполнения обоих условий одновременно?", options: ["OR", "XOR", "AND", "NOT"], answer: "C" },
-        q10: { id: 10, type: "single", text: "Какой тип стрелки в IDEF0 показывает, какие ресурсы используются для выполнения функции?", options: ["Вход", "Выход", "Управление", "Механизм"], answer: "D" },
+        
+        
+        q10: { id: 10, type: "match", text: "Сопоставьте нотацию моделирования с её описанием:",
+               leftItems: ["BPMN", "EPC", "IDEF0"],
+               rightItems: [
+                   "Международный стандарт, наиболее распространённая нотация с богатым визуальным языком",
+                   "Нотация, построенная вокруг событий и функций, требует обязательного чередования",
+                   "Функциональное моделирование с входом, выходом, управлением и механизмами"
+               ],
+               correctMatches: { "BPMN": 0, "EPC": 1, "IDEF0": 2 } },
+        
         q11: { id: 11, type: "single", text: "Что из перечисленного является внутренним источником данных для компании?", options: ["Данные Росстата", "Отзывы клиентов в социальных сетях", "CRM-система компании", "Информация о ценах конкурентов"], answer: "C" },
-        q12: { id: 12, type: "single", text: "Какой SQL-запрос удаляет все записи из таблицы «Заказы»?", options: ["REMOVE FROM Заказы", "DROP TABLE Заказы", "DELETE FROM Заказы", "TRUNCATE Заказы"], answer: "C" },
+        
+        
+        q12: { id: 12, type: "match", text: "Сопоставьте SQL оператор с его назначением:",
+               leftItems: ["SELECT", "WHERE", "GROUP BY", "ORDER BY"],
+               rightItems: [
+                   "Выборка данных из таблицы",
+                   "Фильтрация строк по условию",
+                   "Группировка строк для агрегации",
+                   "Сортировка результатов запроса"
+               ],
+               correctMatches: { "SELECT": 0, "WHERE": 1, "GROUP BY": 2, "ORDER BY": 3 } },
+        
         q13: { id: 13, type: "single", text: "Какой ключ обеспечивает ссылочную целостность между таблицами?", options: ["Первичный ключ", "Внешний ключ", "Составной ключ", "Индекс"], answer: "B" },
         q14: { id: 14, type: "single", text: "Какая команда SQL изменяет структуру существующей таблицы?", options: ["UPDATE TABLE", "CHANGE TABLE", "MODIFY TABLE", "ALTER TABLE"], answer: "D" },
-        q15: { id: 15, type: "single", text: "Как называется четырёхуровневая схема движения данных в бизнесе, представленная в Лекции 3?", options: ["Бизнес-процесс → Excel → Отчёт → Решение", "Бизнес-процесс → оперативная БД → хранилище данных → BI-система", "Данные → Аналитика → Отчёт → Управление", "CRM → ERP → WMS → BI"], answer: "B" },
+        
+        
+        q15: { id: 15, type: "match", text: "Сопоставьте тип стрелки в IDEF0 с её значением:",
+               leftItems: ["Вход", "Управление", "Выход", "Механизм"],
+               rightItems: [
+                   "Преобразуется или расходуется функцией",
+                   "Определяет условия выполнения функции",
+                   "Результат работы функции",
+                   "Ресурсы, поддерживающие выполнение функции"
+               ],
+               correctMatches: { "Вход": 0, "Управление": 1, "Выход": 2, "Механизм": 3 } },
+        
         q16: { id: 16, type: "multiple", text: "Какие элементы относятся к базовым элементам BPMN?", options: ["Овал (начало/конец)", "Прямоугольник (действие)", "Круг (комментарий)", "Ромб (решение/шлюз)"], answer: ["A","B","D"] },
         q17: { id: 17, type: "multiple", text: "Какие преимущества даёт формализация бизнес-процессов?", options: ["Стандартизация и оперативность", "Увеличение количества сотрудников", "Прозрачность и контроль", "Сохранение знаний и обучение"], answer: ["A","C","D"] },
         q18: { id: 18, type: "multiple", text: "Какие типы шлюзов существуют в BPMN?", options: ["Параллельный (AND)", "Эксклюзивный (XOR)", "Циклический (LOOP)", "Неэксклюзивный (OR)"], answer: ["A","B","D"] },
@@ -2042,6 +2072,28 @@ practice8: `
         return arr;
     }
     
+    
+    function shuffleMatchItems(matchQuestion) {
+        const shuffledRightItems = [...matchQuestion.rightItems];
+        const shuffledIndices = [...Array(shuffledRightItems.length).keys()];
+        for (let i = shuffledIndices.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffledIndices[i], shuffledIndices[j]] = [shuffledIndices[j], shuffledIndices[i]];
+        }
+        const newRightItems = shuffledIndices.map(idx => matchQuestion.rightItems[idx]);
+        
+        const newCorrectMatches = {};
+        for (const [key, originalIdx] of Object.entries(matchQuestion.correctMatches)) {
+            const newIdx = shuffledIndices.indexOf(originalIdx);
+            newCorrectMatches[key] = newIdx;
+        }
+        return {
+            rightItems: newRightItems,
+            correctMatches: newCorrectMatches,
+            shuffledIndices: shuffledIndices
+        };
+    }
+    
     function renderTest() {
         currentQuestions = shuffleArray([...Object.values(allQuestions)]);
         const container = document.getElementById('testQuestions');
@@ -2068,6 +2120,48 @@ practice8: `
                     html += '<div class="option"><input type="checkbox" name="q' + q.id + '" value="' + letters[idx] + '" id="q' + q.id + '_' + letters[idx] + '"><label for="q' + q.id + '_' + letters[idx] + '"><strong>' + letters[idx] + '</strong>) ' + opt + '</label></div>';
                 });
                 html += '</div>';
+            } else if (q.type === 'match') {
+                
+                const shuffled = shuffleMatchItems(q);
+                const rightLetters = ['А', 'Б', 'В', 'Г', 'Д', 'Е'];
+                
+                html += '<div class="options">';
+                html += '<div style="display: flex; flex-wrap: wrap; gap: 30px; margin-top: 15px;">';
+                
+                
+                html += '<div style="flex: 1; background: #f8f9fa; padding: 15px; border-radius: 8px;">';
+                html += '<strong>📌 Термины:</strong>';
+                html += '<table style="width: 100%; margin-top: 10px; border-collapse: collapse;">';
+                q.leftItems.forEach((item, idx) => {
+                    html += `<tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 10px; width: 50px; text-align: center;"><strong>${idx + 1}.</strong></td>
+                                <td style="padding: 10px;">${item}</td>
+                                <td style="padding: 10px; width: 80px; text-align: center;">
+                                    <select name="match_${q.id}_${idx}" style="padding: 6px 10px; border-radius: 6px; border: 1px solid #ddd; background: white; cursor: pointer;">
+                                        <option value="">—</option>`;
+                    for (let i = 0; i < shuffled.rightItems.length; i++) {
+                        html += `<option value="${rightLetters[i]}">${rightLetters[i]}</option>`;
+                    }
+                    html += `</select>
+                                </td>
+                              </tr>`;
+                });
+                html += '</table></div>';
+                
+                
+                html += '<div style="flex: 1; background: #e8f0fe; padding: 15px; border-radius: 8px;">';
+                html += '<strong>📖 Определения:</strong>';
+                html += '<table style="width: 100%; margin-top: 10px; border-collapse: collapse;">';
+                shuffled.rightItems.forEach((item, idx) => {
+                    html += `<tr style="border-bottom: 1px solid #e0e0e0;">
+                                <td style="padding: 10px; width: 50px; text-align: center;"><strong>${rightLetters[idx]})</strong></td>
+                                <td style="padding: 10px;">${item}</td>
+                              </tr>`;
+                });
+                html += '</table></div>';
+                html += '</div>';
+                html += '<p style="font-size: 0.85rem; color: #666; margin-top: 10px;">💡 Укажите для каждого термина соответствующую букву из правой колонки</p>';
+                html += '</div>';
             } else if (q.type === 'text') {
                 html += '<div class="options"><input type="text" class="text-answer" name="q' + q.id + '" placeholder="Введите SQL-запрос..." style="width:100%; padding:10px; margin-top:10px; border:1px solid #ddd; border-radius:8px;"></div>';
             }
@@ -2091,6 +2185,27 @@ practice8: `
             } else if (q.type === 'multiple') {
                 const selected = Array.from(document.querySelectorAll('input[name="q' + q.id + '"]:checked')).map(cb => cb.value);
                 if (selected.length === q.answer.length && q.answer.every(a => selected.includes(a))) isCorrect = true;
+            } else if (q.type === 'match') {
+                
+                const shuffled = shuffleMatchItems(q);
+                const rightLetters = ['А', 'Б', 'В', 'Г', 'Д', 'Е'];
+                let allCorrect = true;
+                
+                for (let i = 0; i < q.leftItems.length; i++) {
+                    const select = document.querySelector(`select[name="match_${q.id}_${i}"]`);
+                    if (select && select.value) {
+                        const selectedLetter = select.value;
+                        const selectedIndex = rightLetters.indexOf(selectedLetter);
+                        
+                        const expectedIdx = shuffled.correctMatches[q.leftItems[i]];
+                        if (selectedIndex !== expectedIdx) {
+                            allCorrect = false;
+                        }
+                    } else {
+                        allCorrect = false;
+                    }
+                }
+                isCorrect = allCorrect;
             } else if (q.type === 'text') {
                 const input = document.querySelector('input[name="q' + q.id + '"]');
                 if (input) {
@@ -2103,7 +2218,11 @@ practice8: `
             
             const fb = document.getElementById('fb_' + q.id);
             if (fb) {
-                fb.innerHTML = isCorrect ? '✅ Верно!' : '❌ Неверно. Правильный ответ: ' + (q.answer || 'см. лекцию');
+                if (q.type === 'match') {
+                    fb.innerHTML = isCorrect ? '✅ Верно! Все соответствия установлены правильно.' : '❌ Неверно. Проверьте соответствие терминов и определений.';
+                } else {
+                    fb.innerHTML = isCorrect ? '✅ Верно!' : '❌ Неверно. Правильный ответ: ' + (q.answer || 'см. лекцию');
+                }
                 fb.classList.remove('hidden');
                 fb.classList.add(isCorrect ? 'correct' : 'incorrect');
             }
@@ -2177,10 +2296,10 @@ function showPage(pageId) {
             });
         });
     } else if (contentData[pageId]) {
-        // Получаем номер лекции или практики из pageId
+        
         let contentHtml = contentData[pageId];
         
-        // Добавляем навигационные кнопки только для лекций
+        
         if (pageId.startsWith('lecture')) {
             const lectureNum = parseInt(pageId.replace('lecture', ''));
             const nextLectureNum = lectureNum + 1;
@@ -2188,28 +2307,28 @@ function showPage(pageId) {
             
             let navButtons = '<div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #e0e0e0; display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap;">';
             
-            // Кнопка "Назад" для предыдущей лекции
+            
             if (prevLectureNum >= 1) {
                 navButtons += `<button onclick="showPage('lecture${prevLectureNum}')" style="background: #6c757d; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;">← Лекция ${prevLectureNum}</button>`;
             } else {
                 navButtons += `<div style="width: 120px;"></div>`;
             }
             
-            // Кнопка "Перейти к практической работе"
+            
             navButtons += `<button onclick="showPage('practice${lectureNum}')" style="background: #2c7a4d; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;">📝 Перейти к практической работе №${lectureNum}</button>`;
             
-            // Кнопка "Вперед" для следующей лекции
+            
             if (nextLectureNum <= 6) {
                 navButtons += `<button onclick="showPage('lecture${nextLectureNum}')" style="background: #0066cc; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;">Лекция ${nextLectureNum} →</button>`;
             }
             
             navButtons += '</div>';
             
-            // Добавляем кнопки в конец содержимого
+            
             contentHtml += navButtons;
         }
         
-        // Добавляем навигационные кнопки для практических работ
+        
         if (pageId.startsWith('practice')) {
             const practiceNum = parseInt(pageId.replace('practice', ''));
             const nextPracticeNum = practiceNum + 1;
@@ -2217,24 +2336,24 @@ function showPage(pageId) {
             
             let navButtons = '<div style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #e0e0e0; display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap;">';
             
-            // Кнопка "Назад" для предыдущей практики
+            
             if (prevPracticeNum >= 1) {
                 navButtons += `<button onclick="showPage('practice${prevPracticeNum}')" style="background: #6c757d; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;">← Практическая работа №${prevPracticeNum}</button>`;
             } else {
                 navButtons += `<div style="width: 120px;"></div>`;
             }
             
-            // Кнопка "Вернуться к лекции"
+            
             navButtons += `<button onclick="showPage('lecture${practiceNum}')" style="background: #0066cc; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;">📖 Вернуться к лекции №${practiceNum}</button>`;
             
-            // Кнопка "Вперед" для следующей практики
+            
             if (nextPracticeNum <= 8) {
                 navButtons += `<button onclick="showPage('practice${nextPracticeNum}')" style="background: #2c7a4d; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 1rem; transition: all 0.3s ease;">Практическая работа №${nextPracticeNum} →</button>`;
             }
             
             navButtons += '</div>';
             
-            // Добавляем кнопки в конец содержимого
+           
             contentHtml += navButtons;
         }
         
@@ -2248,10 +2367,9 @@ function showPage(pageId) {
         if (link.getAttribute('data-page') === pageId) link.classList.add('active');
     });
 }
-// Делаем функцию глобальной
+
 window.showPage = showPage;
 
-// Ждем загрузки страницы
 document.addEventListener('DOMContentLoaded', function() {
     showPage('home');
     
@@ -2259,7 +2377,6 @@ document.addEventListener('DOMContentLoaded', function() {
 if (homeBtn) {
     homeBtn.onclick = function(e) {
         e.preventDefault();
-        // ПРОСТО ПЕРЕЗАГРУЖАЕМ СТРАНИЦУ
         location.reload();
         return false;
     };
